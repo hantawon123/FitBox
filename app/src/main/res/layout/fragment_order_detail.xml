@@ -1,0 +1,469 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/mypage_background"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/fit_space_xl">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/btnBack"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:gravity="center"
+                android:text="‹"
+                style="@style/FitText.PrimaryBold32" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="주문 상세"
+                style="@style/FitText.PrimaryBold22" />
+
+            <View
+                android:layout_width="40dp"
+                android:layout_height="40dp" />
+
+        </LinearLayout>
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/fit_space_2xl"
+            card_view:cardCornerRadius="20dp"
+            card_view:cardElevation="3dp"
+            card_view:cardUseCompatPadding="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="22dp">
+
+                <TextView
+                    android:id="@+id/tvOrderNumber"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="주문 번호 #1"
+                    style="@style/FitText.Secondary14" />
+
+                <TextView
+                    android:id="@+id/tvOrderType"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/mypage_fennel"
+                    android:paddingHorizontal="10dp"
+                    android:paddingVertical="5dp"
+                    android:text="단건 주문"
+                    android:textColor="@color/mypage_text"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvMealName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/fit_space_md"
+                    android:text="닭가슴살 샐러드"
+                    style="@style/FitText.PrimaryBold22" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnAddFavorite"
+                    style="@style/MypageSecondaryButton"
+                    card_view:icon="@drawable/ic_heart_line"
+                    card_view:iconGravity="textStart"
+                    card_view:iconPadding="@dimen/fit_space_sm"
+                    card_view:iconTint="@color/mypage_fern"
+                    android:layout_width="match_parent"
+                    android:layout_height="46dp"
+                    android:layout_marginTop="14dp"
+                    android:text="즐겨찾기에 추가" />
+
+                <LinearLayout
+                    android:id="@+id/layoutFavoriteSelection"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/fit_space_md"
+                    android:background="@color/mypage_surface"
+                    android:orientation="vertical"
+                    android:padding="@dimen/fit_space_lg"
+                    android:visibility="gone" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginVertical="18dp"
+                    android:background="@color/white_alt" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="주문 정보"
+                    style="@style/FitText.PrimaryBold17" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="14dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:text="수량"
+                        android:textColor="@color/mypage_text_secondary"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/tvQuantity"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="end"
+                        android:text="1개"
+                        android:textColor="@color/mypage_text"
+                        android:textSize="15sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:text="총 금액"
+                        android:textColor="@color/mypage_text_secondary"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/tvTotalPrice"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="end"
+                        android:text="10,000원"
+                        style="@style/FitText.PrimaryBold16" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:text="수령 방식"
+                        android:textColor="@color/mypage_text_secondary"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/tvReceiveType"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="end"
+                        android:text="픽업"
+                        android:textColor="@color/mypage_text"
+                        android:textSize="15sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/layoutOrderStatus"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:text="진행 상태"
+                        android:textColor="@color/mypage_text_secondary"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/tvOrderStatus"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="end"
+                        android:text="주문 검토 중"
+                        android:textColor="@color/mypage_primary_dark"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/layoutReceivePlaceRow"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:text="수령 날짜"
+                        android:textColor="@color/mypage_text_secondary"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/tvReceiveDate"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="end"
+                        android:text="2026-06-10"
+                        android:textColor="@color/mypage_text"
+                        android:textSize="15sp" />
+
+                </LinearLayout>
+
+<!--                <LinearLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginTop="10dp"-->
+<!--                    android:orientation="horizontal">-->
+
+<!--                    <TextView-->
+<!--                        android:id="@+id/tvReceivePlaceTitle"-->
+<!--                        android:layout_width="100dp"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:text="픽업 매장"-->
+<!--                        android:textColor="@color/mypage_text_secondary"-->
+<!--                        android:textSize="15sp" />-->
+
+<!--                    <TextView-->
+<!--                        android:id="@+id/tvReceivePlace"-->
+<!--                        android:layout_width="0dp"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:layout_weight="1"-->
+<!--                        android:gravity="end"-->
+<!--                        android:text="핏박스 구미역점\n경상북도 구미시 구미중앙로 76"-->
+<!--                        android:textColor="@color/mypage_text"-->
+<!--                        android:textSize="15sp" />-->
+
+<!--                </LinearLayout>-->
+
+                <LinearLayout
+                    android:id="@+id/layoutPickupDetail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:id="@+id/tvReceiveDetailTitle"
+                        style="@style/FitText.PrimaryBold17"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="픽업 정보" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:padding="0dp">
+
+                            <TextView
+                                android:id="@+id/tvPickupStoreBadge"
+                                android:layout_width="100dp"
+                                android:layout_height="wrap_content"
+                                android:text="준비 매장"
+                                android:textColor="@color/mypage_text_secondary"
+                                android:textSize="15sp"
+                                android:textStyle="normal" />
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/tvPickupStoreName"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="end"
+                                    android:text="매장 이름"
+                                    android:textColor="@color/mypage_text"
+                                    android:textSize="15sp" />
+
+                                <TextView
+                                    android:id="@+id/tvPickupStoreAddress"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="4dp"
+                                    android:gravity="end"
+                                    android:lineSpacingExtra="2dp"
+                                    android:text="매장 주소"
+                                    android:textColor="@color/mypage_text"
+                                    android:textSize="15sp" />
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                            <LinearLayout
+                                android:id="@+id/layoutPickupPointDetail"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="12dp"
+                                android:orientation="vertical"
+                                android:visibility="gone">
+
+                                <View
+                                    android:layout_width="match_parent"
+                                    android:layout_height="1dp"
+                                    android:background="@color/white_alt" />
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="12dp"
+                                    android:orientation="horizontal">
+
+                                <TextView
+                                    android:id="@+id/tvPickupPointLabel"
+                                    android:layout_width="100dp"
+                                    android:layout_height="wrap_content"
+                                    android:text="픽업 포인트"
+                                    android:textColor="@color/mypage_text_secondary"
+                                    android:textSize="15sp"
+                                    android:textStyle="normal" />
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        android:id="@+id/tvPickupPointName"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:gravity="end"
+                                        android:text="픽업 포인트 이름"
+                                        android:textColor="@color/mypage_text"
+                                        android:textSize="15sp" />
+
+                                    <TextView
+                                        android:id="@+id/tvPickupPointAddress"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="4dp"
+                                        android:gravity="end"
+                                        android:lineSpacingExtra="2dp"
+                                        android:text="픽업 포인트 주소"
+                                        android:textColor="@color/mypage_text"
+                                        android:textSize="15sp" />
+
+                                    <TextView
+                                        android:id="@+id/tvPickupLocker"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="4dp"
+                                        android:gravity="end"
+                                        android:text="사물함 정보"
+                                        android:textColor="@color/mypage_text"
+                                        android:textSize="15sp"
+                                        android:visibility="gone" />
+
+                                </LinearLayout>
+
+                            </LinearLayout>
+                    </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnNfcPickup"
+                    style="@style/MypagePrimaryButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="@dimen/fit_space_lg"
+                    android:text="픽업하기"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/tvSubscriptionItemsTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="22dp"
+                    android:text="구독 식단 목록"
+                    style="@style/FitText.PrimaryBold17"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/tvSubscriptionItems"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/mypage_surface"
+                    android:lineSpacingExtra="4dp"
+                    android:padding="14dp"
+                    android:text="2026-06-18 / 닭가슴살 도시락 / 1개"
+                    android:textColor="@color/mypage_text_secondary"
+                    android:textSize="15sp"
+                    android:visibility="gone" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginVertical="18dp"
+                    android:background="@color/white_alt" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="주문 시간"
+                    android:textColor="@color/mypage_text_secondary"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/tvOrderTime"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:text="2026-06-10 12:00"
+                    android:textColor="@color/mypage_text"
+                    android:textSize="15sp" />
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </LinearLayout>
+
+</ScrollView>

@@ -1,0 +1,545 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_my_page_screen"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingTop="@dimen/fit_space_2xl"
+        android:paddingBottom="0dp">
+
+        <LinearLayout
+            android:id="@+id/layoutHomeHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingStart="@dimen/fit_space_md"
+            android:paddingEnd="@dimen/fit_space_md">
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="41dp"
+                android:layout_weight="1"
+                android:adjustViewBounds="true"
+                android:contentDescription="@null"
+                android:scaleType="fitStart"
+                android:src="@drawable/logo_background_remove" />
+
+            <FrameLayout
+                android:id="@+id/layoutNotificationButton"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:layout_marginStart="@dimen/fit_space_sm">
+
+                <ImageButton
+                    android:id="@+id/btnNotification"
+                    android:layout_width="44dp"
+                    android:layout_height="44dp"
+                    android:background="@android:color/transparent"
+                    android:contentDescription="알림"
+                    android:padding="@dimen/fit_space_sm"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/notifications"
+                    app:tint="@color/mypage_fern" />
+
+                <TextView
+                    android:id="@+id/tvNotificationCountBadge"
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:layout_gravity="top|end"
+                    android:background="@drawable/bg_cart_count_badge"
+                    android:gravity="center"
+                    android:includeFontPadding="false"
+                    android:text="0"
+                    android:textColor="@color/white"
+                    android:textSize="10sp"
+                    android:textStyle="bold"
+                    android:visibility="gone" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/layoutCartButton"
+                android:layout_width="44dp"
+                android:layout_height="44dp">
+
+                <ImageButton
+                    android:id="@+id/btnCart"
+                    android:layout_width="44dp"
+                    android:layout_height="44dp"
+                    android:background="@android:color/transparent"
+                    android:contentDescription="장바구니"
+                    android:padding="@dimen/fit_space_sm"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/cart"
+                    app:tint="@color/mypage_fern" />
+
+                <TextView
+                    android:id="@+id/tvCartCountBadge"
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:layout_gravity="top|end"
+                    android:background="@drawable/bg_cart_count_badge"
+                    android:gravity="center"
+                    android:includeFontPadding="false"
+                    android:text="0"
+                    android:textColor="@color/white"
+                    android:textSize="10sp"
+                    android:textStyle="bold"
+                    android:visibility="gone" />
+
+            </FrameLayout>
+
+        </LinearLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/layoutHomeSearch"
+            style="@style/FitInputLayout"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_marginStart="@dimen/fit_space_md"
+            android:layout_marginTop="@dimen/fit_space_sm"
+            android:layout_marginEnd="@dimen/fit_space_md"
+            android:hint="식단을 검색해보세요"
+            app:boxBackgroundColor="@color/mypage_warm_white"
+            app:boxCornerRadiusBottomEnd="14dp"
+            app:boxCornerRadiusBottomStart="14dp"
+            app:boxCornerRadiusTopEnd="14dp"
+            app:boxCornerRadiusTopStart="14dp"
+            app:boxStrokeColor="@color/mypage_fern"
+            app:hintTextColor="@color/mypage_text_secondary"
+            app:startIconDrawable="@android:drawable/ic_menu_search"
+            app:startIconTint="@color/mypage_fern">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etSearch"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:singleLine="true"
+                android:textColor="@color/mypage_text"
+                android:textSize="12sp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <LinearLayout
+            android:id="@+id/layoutCustomMealCta"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/fit_space_lg"
+            android:gravity="start"
+            android:orientation="vertical"
+            android:paddingStart="@dimen/fit_space_md"
+            android:paddingEnd="@dimen/fit_space_md">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="마음에 드는 식단이 없으신가요?"
+                android:textColor="@color/mypage_text"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:text="나의 취향에 딱 맞는 재료들을 골라 나만의 식단을 만들어 보세요"
+                android:textColor="@color/mypage_text_secondary"
+                android:textSize="12sp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnGoCustom"
+                style="@style/FitPrimaryButton"
+                android:layout_width="wrap_content"
+                android:layout_height="42dp"
+                android:layout_marginTop="@dimen/fit_space_sm"
+                android:backgroundTint="@color/mypage_fern"
+                android:minWidth="0dp"
+                android:minHeight="42dp"
+                android:paddingStart="14dp"
+                android:paddingEnd="16dp"
+                android:text="내 식단 직접 만들기"
+                android:textColor="@color/white"
+                android:textSize="13sp"
+                app:cornerRadius="6dp"
+                app:icon="@android:drawable/ic_menu_edit"
+                app:iconGravity="textStart"
+                app:iconTint="@color/white"
+                app:iconPadding="6dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layoutHomeContentPanel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/fit_space_2xl"
+            android:background="@drawable/bg_home_content_panel"
+            android:clipToPadding="false"
+            android:elevation="5dp"
+            android:orientation="vertical"
+            android:outlineProvider="background"
+            android:paddingStart="@dimen/fit_space_md"
+            android:paddingTop="@dimen/fit_space_lg"
+            android:paddingEnd="@dimen/fit_space_md"
+            android:paddingBottom="@dimen/fit_space_lg">
+
+        <TextView
+            android:id="@+id/tvAiRecommendTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="AI가 분석한 맞춤 조합"
+            android:textColor="@color/mypage_text"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvAiRecommendDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/fit_space_xs"
+            android:text="이번달 최고 인기 메뉴들을 둘러보세요"
+            android:textColor="@color/mypage_text_secondary"
+            android:textSize="13sp" />
+
+        <LinearLayout
+            android:id="@+id/cardRecommendProduct"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/fit_space_sm"
+            android:clickable="true"
+            android:focusable="true"
+            android:orientation="vertical">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="190dp"
+                android:layout_marginTop="@dimen/fit_space_sm"
+                android:layout_marginBottom="@dimen/fit_space_sm"
+                android:layout_marginStart="-12dp"
+                android:layout_marginEnd="-12dp">
+
+                <ImageView
+                    android:id="@+id/ivRecommendProduct"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@android:color/white"
+                    android:contentDescription="추천 식단 이미지"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/logo_full_background_remove" />
+
+                <ImageButton
+                    android:id="@+id/btnPopularPrev"
+                    android:layout_width="56dp"
+                    android:layout_height="56dp"
+                    android:layout_gravity="center_vertical|start"
+                    android:background="@android:color/transparent"
+                    android:contentDescription="이전 인기 식단"
+                    android:padding="10dp"
+                    android:src="@drawable/ic_chevron_left"
+                    app:tint="@color/mypage_warm_white" />
+
+                <ImageButton
+                    android:id="@+id/btnPopularNext"
+                    android:layout_width="56dp"
+                    android:layout_height="56dp"
+                    android:layout_gravity="center_vertical|end"
+                    android:background="@android:color/transparent"
+                    android:contentDescription="다음 인기 식단"
+                    android:padding="10dp"
+                    android:src="@drawable/ic_chevron_right"
+                    app:tint="@color/mypage_warm_white" />
+
+            </FrameLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingTop="@dimen/fit_space_md">
+
+                <TextView
+                    android:id="@+id/tvRecommendName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="추천 식단을 불러오는 중입니다"
+                    android:textColor="@color/mypage_text"
+                    android:textSize="17sp"
+                    android:textStyle="normal" />
+
+                <TextView
+                    android:id="@+id/tvRecommendNutrition"
+                    style="@style/FitText.Secondary13"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:text="영양 정보를 불러오는 중입니다"
+                    android:textColor="@color/mypage_text_secondary" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/fit_space_md"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tvRecommendPrice"
+                        style="@style/FitText.PrimaryBold18"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="0원"
+                        android:textColor="@color/mypage_text" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnAddRecommend"
+                        style="@style/FitSecondaryButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="40dp"
+                        android:backgroundTint="@android:color/transparent"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:minHeight="40dp"
+                        android:text="담기"
+                        android:textColor="@color/mypage_fern"
+                        android:textSize="13sp"
+                        app:cornerRadius="6dp"
+                        app:icon="@drawable/cart"
+                        app:iconTint="@color/mypage_fern"
+                        app:strokeColor="@android:color/transparent"
+                        app:strokeWidth="0dp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <View
+            style="@style/FitDivider.Subtle"
+            android:layout_marginStart="@dimen/fit_space_sm"
+            android:layout_marginTop="@dimen/fit_space_lg"
+            android:layout_marginEnd="@dimen/fit_space_sm" />
+
+        <LinearLayout
+            android:id="@+id/layoutMealCategories"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/fit_space_lg"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="목적별 식단 둘러보기"
+                android:textColor="@color/mypage_text"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/fit_space_xs"
+                android:text="원하는 목표를 선택해 맞춤 식단을 확인해보세요."
+                android:textColor="@color/mypage_text_secondary"
+                android:textSize="13sp" />
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/fit_space_md"
+                android:clipToPadding="false"
+                android:overScrollMode="never"
+                android:scrollbars="none">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/btnCategoryAll"
+                        android:layout_width="wrap_content"
+                        android:layout_height="34dp"
+                        android:background="@drawable/bg_home_category_selected"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:gravity="center"
+                        android:minWidth="0dp"
+                        android:paddingStart="12dp"
+                        android:paddingEnd="12dp"
+                        android:text="전체"
+                        android:textColor="@color/mypage_fern"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/btnCategoryDiet"
+                        android:layout_width="wrap_content"
+                        android:layout_height="34dp"
+                        android:layout_marginStart="6dp"
+                        android:background="@drawable/bg_home_category_plain"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:gravity="center"
+                        android:minWidth="0dp"
+                        android:paddingStart="12dp"
+                        android:paddingEnd="12dp"
+                        android:text="다이어트"
+                        android:textColor="@color/mypage_fern"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/btnCategoryBulking"
+                        android:layout_width="wrap_content"
+                        android:layout_height="34dp"
+                        android:layout_marginStart="6dp"
+                        android:background="@drawable/bg_home_category_plain"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:gravity="center"
+                        android:minWidth="0dp"
+                        android:paddingStart="12dp"
+                        android:paddingEnd="12dp"
+                        android:text="벌크업"
+                        android:textColor="@color/mypage_fern"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/btnCategoryMaintain"
+                        android:layout_width="wrap_content"
+                        android:layout_height="34dp"
+                        android:layout_marginStart="6dp"
+                        android:background="@drawable/bg_home_category_plain"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:gravity="center"
+                        android:minWidth="0dp"
+                        android:paddingStart="12dp"
+                        android:paddingEnd="12dp"
+                        android:text="유지어터"
+                        android:textColor="@color/mypage_fern"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/btnCategoryPostWorkout"
+                        android:layout_width="wrap_content"
+                        android:layout_height="34dp"
+                        android:layout_marginStart="6dp"
+                        android:background="@drawable/bg_home_category_plain"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:gravity="center"
+                        android:minWidth="0dp"
+                        android:paddingStart="12dp"
+                        android:paddingEnd="12dp"
+                        android:text="운동 후 식사"
+                        android:textColor="@color/mypage_fern"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </HorizontalScrollView>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvCategoryProduct"
+                android:layout_width="match_parent"
+                android:layout_height="262dp"
+                android:layout_marginTop="@dimen/fit_space_md"
+                android:clipToPadding="false"
+                android:nestedScrollingEnabled="false"
+                android:overScrollMode="never" />
+
+            <TextView
+                android:id="@+id/tvCategoryEmpty"
+                style="@style/FitText.Secondary13"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:gravity="center"
+                android:text="해당 목적의 식단이 아직 없어요"
+                android:textColor="@color/mypage_text_secondary"
+                android:visibility="gone" />
+
+            <View
+                style="@style/FitDivider.Subtle"
+                android:layout_marginStart="@dimen/fit_space_md"
+                android:layout_marginTop="@dimen/fit_space_lg"
+                android:layout_marginEnd="@dimen/fit_space_md" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvPopularTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/fit_space_lg"
+            android:text="이번 달 가장 인기 있는 식단"
+            android:textColor="@color/mypage_text"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvSearchResultTitle"
+            style="@style/FitText.PrimaryBold18"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/fit_space_2xl"
+            android:text="검색 결과"
+            android:textColor="@color/mypage_text"
+            android:visibility="gone" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvPopularProduct"
+            android:layout_width="match_parent"
+            android:layout_height="282dp"
+            android:layout_marginTop="@dimen/fit_space_md"
+            android:clipToPadding="false"
+            android:nestedScrollingEnabled="false"
+            android:overScrollMode="never" />
+
+        <LinearLayout
+            android:id="@+id/layoutSearchEmpty"
+            android:layout_width="match_parent"
+            android:layout_height="220dp"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <ImageView
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:alpha="0.65"
+                android:contentDescription="검색 결과 없음"
+                android:src="@android:drawable/ic_menu_search"
+                app:tint="@color/mypage_fern" />
+
+            <TextView
+                style="@style/FitText.PrimaryBold16"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:text="검색 결과가 없어요"
+                android:textColor="@color/mypage_text" />
+
+            <TextView
+                style="@style/FitText.Secondary13"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:text="다른 식단 이름으로 검색해보세요."
+                android:textColor="@color/mypage_text_secondary" />
+
+        </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>

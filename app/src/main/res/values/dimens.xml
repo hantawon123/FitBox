@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="fit_space_xs">4dp</dimen>
+    <dimen name="fit_space_sm">8dp</dimen>
+    <dimen name="fit_space_md">12dp</dimen>
+    <dimen name="fit_space_lg">16dp</dimen>
+    <dimen name="fit_space_xl">20dp</dimen>
+    <dimen name="fit_space_2xl">24dp</dimen>
+    <dimen name="fit_divider_height">1dp</dimen>
+    <dimen name="fit_button_height">52dp</dimen>
+    <dimen name="fit_button_height_compact">44dp</dimen>
+    <dimen name="fit_card_radius">20dp</dimen>
+    <dimen name="fit_card_radius_small">18dp</dimen>
+</resources>

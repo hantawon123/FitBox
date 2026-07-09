@@ -1,0 +1,867 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/subscriptionScrollView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/mypage_background"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/fit_space_xl">
+
+        <TextView
+            android:id="@+id/tvSubscriptionTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="정기 구독 만들기"
+            style="@style/FitText.PrimaryBold28" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            app:cardBackgroundColor="@color/mypage_fennel"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="0dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="14dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="월 단위 자동 반복 구독"
+                    android:textColor="@color/mypage_primary_dark"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:lineSpacingExtra="3dp"
+                    android:text="선택한 주차·요일 규칙은 한 달마다 자동 갱신돼요.&#10;예: 1주차 월요일 선택 → 해지 전까지 매월 1주차 월요일에 반복"
+                    android:textColor="@color/mypage_primary_dark"
+                    android:textSize="12sp" />
+
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:baselineAligned="false"
+            android:orientation="horizontal"
+            android:weightSum="3">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvSubscriptionStepOneIndicator"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:background="@drawable/bg_subscription_step_active"
+                        android:gravity="center"
+                        android:text="1"
+                        android:textColor="@color/mypage_warm_white"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvSubscriptionStepOneLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:text="시작일"
+                        android:textColor="@color/mypage_text"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvSubscriptionStepTwoIndicator"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:background="@drawable/bg_subscription_step"
+                        android:gravity="center"
+                        android:text="2"
+                        android:textColor="@color/mypage_fern"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvSubscriptionStepTwoLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:text="식단 구성"
+                        style="@style/FitText.Secondary12" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvSubscriptionStepThreeIndicator"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:background="@drawable/bg_subscription_step"
+                        android:gravity="center"
+                        android:text="3"
+                        android:textColor="@color/mypage_fern"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvSubscriptionStepThreeLabel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:text="수령 방법"
+                        style="@style/FitText.Secondary12" />
+
+                </LinearLayout>
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="18dp"
+            android:layout_marginBottom="18dp"
+            android:background="@color/mypage_divider" />
+
+        <com.google.android.material.button.MaterialButton
+            style="@style/MypagePrimaryButton"
+            android:id="@+id/btnCreateCustomMenu"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:layout_marginTop="14dp"
+            android:minHeight="44dp"
+            android:text="커스텀 메뉴 만들기"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:id="@+id/cardSubscriptionStartStep"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="0dp"
+            android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="1. 월 구독 시작일"
+                    style="@style/FitText.PrimaryBold18" />
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    app:cardBackgroundColor="@color/mypage_fennel"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="0dp">
+
+                <TextView
+                    android:id="@+id/tvSubscriptionStartDate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="14dp"
+                    android:lineSpacingExtra="3dp"
+                    android:textColor="@color/mypage_primary_dark"
+                    android:text="월 정기구독 시작일을 선택해주세요.&#10;선택 후 시작일과 만료일이 여기에 표시됩니다."
+                    style="@style/FitText.Secondary14" />
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.button.MaterialButton
+                    style="@style/MypagePrimaryButton"
+                    android:id="@+id/btnSelectSubscriptionStartDate"
+                    android:layout_width="match_parent"
+                    android:layout_height="44dp"
+                    android:layout_marginTop="12dp"
+                    android:minHeight="44dp"
+                    android:text="구독 시작일 선택"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/cardSubscriptionMealStep"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="2-1. 식단 선택"
+                    style="@style/FitText.PrimaryBold18" />
+
+                <HorizontalScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/fit_space_md"
+                    android:scrollbars="none">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <com.google.android.material.button.MaterialButton
+                            style="@style/FitMealFilterButton.Selected"
+                            android:id="@+id/btnFilterAll"
+                            android:layout_width="wrap_content"
+                            android:layout_height="38dp"
+                            android:text="전체" />
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnFilterFavorites"
+                            style="@style/FitMealFilterButton"
+                            android:layout_width="wrap_content"
+                            android:layout_marginStart="@dimen/fit_space_sm"
+                            android:text="&#51600;&#44200;&#52286;&#44592;" />
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnFilterDiet"
+                            style="@style/FitMealFilterButton"
+                            android:layout_width="wrap_content"
+                            android:layout_marginStart="@dimen/fit_space_sm"
+                            android:text="다이어트" />
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnFilterBulking"
+                            style="@style/FitMealFilterButton"
+                            android:layout_width="wrap_content"
+                            android:layout_marginStart="@dimen/fit_space_sm"
+                            android:text="벌크업" />
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnFilterSalad"
+                            style="@style/FitMealFilterButton"
+                            android:layout_width="wrap_content"
+                            android:layout_marginStart="@dimen/fit_space_sm"
+                            android:text="샐러드" />
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnFilterSimple"
+                            style="@style/FitMealFilterButton"
+                            android:layout_width="wrap_content"
+                            android:layout_marginStart="@dimen/fit_space_sm"
+                            android:text="간편식" />
+
+                    </LinearLayout>
+
+                </HorizontalScrollView>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvProductMeals"
+                    android:layout_width="match_parent"
+                    android:layout_height="262dp"
+                    android:layout_marginTop="14dp"
+                    android:clipToPadding="false"
+                    android:orientation="horizontal"
+                    android:overScrollMode="never" />
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    app:cardBackgroundColor="@color/mypage_fennel"
+                    app:cardCornerRadius="8dp"
+                    app:cardElevation="0dp">
+
+                <TextView
+                    android:id="@+id/tvSelectedMenu"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="14dp"
+                    android:lineSpacingExtra="4dp"
+                    android:text="선택된 메뉴가 없습니다."
+                    style="@style/FitText.Secondary14" />
+
+                </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/cardSubscriptionScheduleStep"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="22dp"
+            android:orientation="vertical">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginBottom="18dp"
+                    android:background="@color/mypage_surface" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="2-2. 매월 반복 일정"
+                    style="@style/FitText.PrimaryBold18" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:text="선택한 주차와 요일은 매월 동일하게 반복돼요. 1주차만 선택해도 매달 1주차에 계속 배송됩니다."
+                    style="@style/FitText.Secondary13" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="18dp"
+                    android:background="@color/mypage_warm_white"
+                    android:orientation="vertical"
+                    android:padding="14dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="매월 몇 번째 주에 받을까요?"
+                        style="@style/FitText.PrimaryBold15" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
+                        android:text="주차는 시작일 기준 7일 단위이며, 선택한 규칙이 매월 갱신됩니다."
+                        style="@style/FitText.Secondary12" />
+
+                    <HorizontalScrollView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:fillViewport="false"
+                        android:overScrollMode="never"
+                        android:scrollbars="none">
+
+                        <com.google.android.material.chip.ChipGroup
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:chipSpacingHorizontal="8dp"
+                            app:chipSpacingVertical="8dp"
+                            app:singleLine="true"
+                            app:singleSelection="false">
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/checkWeekAll"
+                            style="@style/FitRepeatChip"
+                            android:layout_width="wrap_content"
+                            android:checked="true"
+                            android:text="전체" />
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/checkWeek1"
+                            style="@style/FitRepeatChip"
+                            android:layout_width="wrap_content"
+                            android:checked="true"
+                            android:text="1주차" />
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/checkWeek2"
+                            style="@style/FitRepeatChip"
+                            android:layout_width="wrap_content"
+                            android:checked="true"
+                            android:text="2주차" />
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/checkWeek3"
+                            style="@style/FitRepeatChip"
+                            android:layout_width="wrap_content"
+                            android:checked="true"
+                            android:text="3주차" />
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/checkWeek4"
+                            style="@style/FitRepeatChip"
+                            android:layout_width="wrap_content"
+                            android:checked="true"
+                            android:text="4주차" />
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/checkWeek5"
+                            style="@style/FitRepeatChip"
+                            android:layout_width="wrap_content"
+                            android:checked="true"
+                            android:text="5주차" />
+
+                        </com.google.android.material.chip.ChipGroup>
+
+                    </HorizontalScrollView>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/fit_space_md"
+                    android:background="@color/mypage_warm_white"
+                    android:orientation="vertical"
+                    android:padding="14dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="어떤 요일에 받을까요?"
+                        style="@style/FitText.PrimaryBold15" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
+                        android:text="생활 패턴에 맞는 요일을 선택해주세요."
+                        style="@style/FitText.Secondary12" />
+
+                    <HorizontalScrollView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:fillViewport="false"
+                        android:overScrollMode="never"
+                        android:scrollbars="none">
+
+                        <com.google.android.material.chip.ChipGroup
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:chipSpacingHorizontal="8dp"
+                            app:chipSpacingVertical="8dp"
+                            app:singleLine="true"
+                            app:singleSelection="false">
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/checkDayMon"
+                            style="@style/FitRepeatChip"
+                            android:layout_width="wrap_content"
+                            android:checked="true"
+                            android:text="월" />
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/checkDayTue"
+                            style="@style/FitRepeatChip"
+                            android:layout_width="wrap_content"
+                            android:text="화" />
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/checkDayWed"
+                            style="@style/FitRepeatChip"
+                            android:layout_width="wrap_content"
+                            android:text="수" />
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/checkDayThu"
+                            style="@style/FitRepeatChip"
+                            android:layout_width="wrap_content"
+                            android:text="목" />
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/checkDayFri"
+                            style="@style/FitRepeatChip"
+                            android:layout_width="wrap_content"
+                            android:text="금" />
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/checkDaySat"
+                            style="@style/FitRepeatChip"
+                            android:layout_width="wrap_content"
+                            android:text="토" />
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/checkDaySun"
+                            style="@style/FitRepeatChip"
+                            android:layout_width="wrap_content"
+                            android:text="일" />
+
+                        </com.google.android.material.chip.ChipGroup>
+
+                    </HorizontalScrollView>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="44dp"
+                    android:layout_marginTop="14dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="수량"
+                    style="@style/FitText.Secondary14"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/btnDecreaseQuantity"
+                        android:layout_width="38dp"
+                        android:layout_height="38dp"
+                        android:background="@drawable/bg_quantity_stepper"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:gravity="center"
+                        android:text="-"
+                        android:textColor="@color/quantity_stepper_text"
+                        android:textSize="22sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvSelectedQuantity"
+                        android:layout_width="74dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginHorizontal="6dp"
+                        android:background="@color/mypage_surface"
+                        android:gravity="center"
+                        android:text="1개"
+                        style="@style/FitText.PrimaryBold16" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/btnIncreaseQuantity"
+                        android:layout_width="38dp"
+                        android:layout_height="38dp"
+                        android:background="@drawable/bg_quantity_stepper"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:gravity="center"
+                        android:text="+"
+                        android:textColor="@color/quantity_stepper_text"
+                        android:textSize="22sp"
+                        android:textStyle="bold" />
+
+                </LinearLayout>
+
+                </LinearLayout>
+
+                <com.google.android.material.button.MaterialButton
+                    style="@style/MypagePrimaryButton"
+                    android:id="@+id/btnAddPlanItem"
+                    android:layout_width="match_parent"
+                    android:layout_height="44dp"
+                    android:layout_marginTop="14dp"
+                    android:minHeight="44dp"
+                    android:text="구독 식단표에 추가"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/cardSubscriptionPlanStep"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="22dp"
+            android:orientation="vertical">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginBottom="18dp"
+                    android:background="@color/mypage_surface" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="매월 반복할 구독 식단"
+                    style="@style/FitText.PrimaryBold18" />
+
+                <TextView
+                    android:id="@+id/tvPlanSummary"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/fit_space_sm"
+                    android:text="아직 반복 규칙이 없습니다.&#10;추가한 식단은 매월 같은 주차와 요일에 자동 반복돼요."
+                    style="@style/FitText.Secondary13"
+                    android:lineSpacingExtra="3dp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:lineSpacingExtra="3dp"
+                    android:text="표시된 일정은 매월 반복됩니다.&#10;첫 달 이후에도 같은 주차·요일과 수량으로 자동 생성돼요."
+                    android:textColor="@color/mypage_primary_dark"
+                    android:textSize="12sp" />
+
+                <LinearLayout
+                    android:id="@+id/layoutSubscriptionCalendarCard"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/fit_space_md"
+                    android:background="@color/mypage_warm_white"
+                    android:orientation="vertical"
+                    android:padding="12dp"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:id="@+id/tvSubscriptionCalendarTitle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="첫 달 구독 달력"
+                        android:textColor="@color/mypage_text"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <GridLayout
+                        android:id="@+id/gridSubscriptionCalendar"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:columnCount="7"
+                        android:rowCount="7" />
+
+                </LinearLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvSubscriptionPlan"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/fit_space_md"
+                    android:nestedScrollingEnabled="false"
+                    android:overScrollMode="never"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/tvPlanMonthlyTotal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:gravity="end"
+                    android:text="월 구독 총액 0원"
+                    android:textColor="@color/mypage_primary_dark"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:visibility="gone" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvSubscriptionReceiveStepTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="26dp"
+            android:text="3. 배송지"
+            style="@style/FitText.PrimaryBold18" />
+
+        <LinearLayout
+            android:id="@+id/layoutAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/fit_space_lg"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="배송지"
+                        style="@style/FitText.PrimaryBold18" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:text="등록 배송지를 선택하거나 도로명 주소 검색으로 새 배송지를 입력할 수 있습니다."
+                        style="@style/FitText.Secondary13" />
+
+                    <Spinner
+                        android:id="@+id/spinnerSavedAddress"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:visibility="gone" />
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="44dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/bg_subscription_address_input">
+
+                    <EditText
+                        android:id="@+id/etAddress"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@android:color/transparent"
+                        android:focusable="false"
+                        android:gravity="center_vertical"
+                        android:hint="검색한 도로명 주소"
+                        android:paddingStart="14dp"
+                        android:paddingEnd="50dp"
+                        android:textColor="@color/mypage_text"
+                        android:textColorHint="@color/mypage_text_secondary"
+                        android:textSize="14sp" />
+
+                        <androidx.appcompat.widget.AppCompatImageButton
+                            android:id="@+id/btnSearchDeliveryAddress"
+                            android:layout_width="44dp"
+                            android:layout_height="44dp"
+                            android:layout_gravity="end|center_vertical"
+                            android:background="@android:color/transparent"
+                            android:contentDescription="도로명 주소 검색"
+                            android:padding="10dp"
+                            android:src="@drawable/ic_search_line" />
+
+                    </FrameLayout>
+
+                    <EditText
+                        android:id="@+id/etAddressDetail"
+                        android:layout_width="match_parent"
+                        android:layout_height="44dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/bg_subscription_address_input"
+                        android:gravity="center_vertical"
+                        android:hint="상세 주소 입력 예: 101동 1203호"
+                        android:inputType="text"
+                        android:paddingHorizontal="14dp"
+                        android:textColor="@color/mypage_text"
+                        android:textColorHint="@color/mypage_text_secondary"
+                        android:textSize="14sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/cardDeliveryStore"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="22dp"
+            android:visibility="gone"
+            android:orientation="vertical">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginBottom="18dp"
+                android:background="@color/mypage_divider" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="담당 매장"
+                    style="@style/FitText.PrimaryBold18" />
+
+                <TextView
+                    android:id="@+id/tvDeliveryStoreName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/fit_space_sm"
+                    android:text="배송지를 선택하면 가장 가까운 매장이 자동 선택됩니다."
+                    style="@style/FitText.Secondary14" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tvDeliveryStoreAddress"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:text=""
+                        style="@style/FitText.Secondary13" />
+
+                    <TextView
+                        android:id="@+id/tvDeliveryStoreDistance"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:text=""
+                        style="@style/FitText.PrimaryAccent13" />
+
+                </LinearLayout>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnChangeDeliveryStore"
+                    style="@style/MypageTonalButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="42dp"
+                    android:layout_marginTop="12dp"
+                    android:minHeight="42dp"
+                    android:textSize="13sp"
+                    android:text="지도에서 담당 매장 변경" />
+
+        </LinearLayout>
+
+        <com.google.android.material.button.MaterialButton
+            style="@style/MypagePrimaryButton"
+            android:id="@+id/btnSubscriptionOrder"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="22dp"
+            android:minHeight="48dp"
+            android:text="월 정기구독 시작하기"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:id="@+id/layoutSubscriptionStepNavigation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:orientation="horizontal">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnSubscriptionPrevious"
+                style="@style/MypageSecondaryButton"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_weight="1"
+                android:minHeight="40dp"
+                android:textSize="13sp"
+                android:text="이전" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnSubscriptionNext"
+                style="@style/MypagePrimaryButton"
+                android:layout_width="0dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="10dp"
+                android:layout_weight="1"
+                android:minHeight="40dp"
+                android:textSize="13sp"
+                android:text="다음" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>

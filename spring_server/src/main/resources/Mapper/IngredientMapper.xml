@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ssafy.fitbox.mapper.IngredientMapper">
+
+    <resultMap id="ingredientMap" type="Ingredient">
+        <id property="id" column="id" />
+        <result property="name" column="name" />
+        <result property="calories" column="calories" />
+        <result property="carbohydrate" column="carbohydrate" />
+        <result property="protein" column="protein" />
+        <result property="fat" column="fat" />
+        <result property="categories" column="categories" />
+        <result property="price" column="price" />
+        <result property="imageUrl" column="image_url" />
+    </resultMap>
+
+    <select id="selectAll" resultMap="ingredientMap">
+        SELECT
+            id,
+            name,
+            calories,
+            carbohydrate,
+            protein,
+            fat,
+            categories,
+            price,
+            image_url
+        FROM ingredient_table
+        ORDER BY id DESC
+    </select>
+
+    <select id="selectById" parameterType="int" resultMap="ingredientMap">
+        SELECT
+            id,
+            name,
+            calories,
+            carbohydrate,
+            protein,
+            fat,
+            categories,
+            price,
+            image_url
+        FROM ingredient_table
+        WHERE id = #{id}
+    </select>
+
+    <insert id="insert" parameterType="Ingredient" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO ingredient_table (
+            name,
+            calories,
+            carbohydrate,
+            protein,
+            fat,
+            categories,
+            price,
+            image_url
+        )
+        VALUES (
+            #{name},
+            #{calories},
+            #{carbohydrate},
+            #{protein},
+            #{fat},
+            #{categories},
+            #{price},
+            #{imageUrl}
+        )
+    </insert>
+
+    <update id="update" parameterType="Ingredient">
+        UPDATE ingredient_table
+        SET
+            name = #{name},
+            calories = #{calories},
+            carbohydrate = #{carbohydrate},
+            protein = #{protein},
+            fat = #{fat},
+            categories = #{categories},
+            price = #{price},
+            image_url = #{imageUrl}
+        WHERE id = #{id}
+    </update>
+
+    <delete id="delete" parameterType="int">
+        DELETE FROM ingredient_table
+        WHERE id = #{id}
+    </delete>
+
+</mapper>

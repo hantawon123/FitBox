@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingHorizontal="@dimen/fit_space_xl"
+    android:paddingTop="@dimen/fit_space_md">
+
+    <TextView
+        style="@style/FitText.Secondary14"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="사용 가능한 사물함을 선택해주세요." />
+
+    <TextView
+        android:id="@+id/tvPickupDate"
+        style="@style/FitText.PrimaryBold15Accent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/fit_space_sm"
+        android:gravity="center"
+        android:text="픽업 예정일 · 2026-06-23" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="32dp"
+        android:layout_marginTop="@dimen/fit_space_lg"
+        android:background="@color/mypage_surface"
+        android:gravity="center"
+        android:text="PICKUP LOCKER"
+        android:textColor="@color/mypage_text_secondary"
+        android:textSize="12sp"
+        android:textStyle="bold" />
+
+    <GridLayout
+        android:id="@+id/gridLockers"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="@dimen/fit_space_lg"
+        android:gravity="center"
+        android:columnCount="5"
+        android:orientation="horizontal" />
+
+    <TextView
+        android:id="@+id/tvSelectedLocker"
+        style="@style/FitText.PrimaryBold15Accent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/fit_space_lg"
+        android:gravity="center"
+        android:text="선택된 사물함이 없습니다." />
+
+    <TextView
+        style="@style/FitText.Secondary12"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/fit_space_sm"
+        android:gravity="center"
+        android:text="회색 사물함은 해당 픽업 날짜에 사용 중입니다." />
+
+</LinearLayout>

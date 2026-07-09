@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cardCartItem"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/fit_space_sm"
+    app:cardBackgroundColor="@color/mypage_warm_white"
+    app:cardCornerRadius="6dp"
+    app:cardElevation="3dp"
+    app:cardUseCompatPadding="true"
+    app:strokeColor="@android:color/transparent"
+    app:strokeWidth="0dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:padding="@dimen/fit_space_md">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/ivCartItemImage"
+            android:layout_width="84dp"
+            android:layout_height="84dp"
+            android:scaleType="centerCrop"
+            android:background="@android:color/white"
+            android:src="@drawable/logo_full_background_remove"
+            app:shapeAppearanceOverlay="@style/FitShapeRoundedImage6" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/fit_space_md"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvCartItemName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="고단백 닭가슴살 도시락"
+                android:textColor="@color/mypage_text"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvCartItemTypeQuantity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/fit_space_xs"
+                android:text="완제품 · 수량 1개"
+                android:textColor="@color/mypage_text_secondary"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/tvCartItemNutrition"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="569kcal · 탄수화물 61.7g · 단백질 51.3g · 지방 11.9g"
+                android:textColor="@color/mypage_text_secondary"
+                android:textSize="12sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/fit_space_sm"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tvCartItemPrice"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="8,140원"
+                    android:textColor="@color/mypage_fern"
+                    android:textSize="17sp"
+                    android:textStyle="bold" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnDeleteCartItem"
+                    style="@style/Widget.Material3.Button.TextButton"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:backgroundTint="@android:color/transparent"
+                    android:insetTop="0dp"
+                    android:insetBottom="0dp"
+                    android:minHeight="40dp"
+                    android:minWidth="40dp"
+                    android:padding="8dp"
+                    android:text=""
+                    android:textColor="@color/mypage_peach"
+                    app:cornerRadius="6dp"
+                    app:icon="@drawable/ic_trash_line"
+                    app:iconGravity="textStart"
+                    app:iconPadding="0dp"
+                    app:iconTint="@color/mypage_peach" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

@@ -1,0 +1,20 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.MyApplication" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Keep the product palette consistent until a dedicated dark palette is designed. -->
+        <item name="colorPrimary">@color/fit_primary</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorPrimaryContainer">@color/fit_primary_container</item>
+        <item name="colorOnPrimaryContainer">@color/fit_on_primary_container</item>
+        <item name="colorSecondary">@color/fit_secondary</item>
+        <item name="colorSurface">@color/fit_surface</item>
+        <item name="colorOnSurface">@color/fit_text_primary</item>
+        <item name="colorOnSurfaceVariant">@color/fit_text_secondary</item>
+        <item name="colorOutline">@color/fit_outline</item>
+        <item name="android:colorBackground">@color/fit_background</item>
+        <item name="android:statusBarColor">@color/fit_background</item>
+        <item name="android:navigationBarColor">@color/mypage_surface</item>
+        <item name="materialButtonStyle">@style/FitPrimaryButton</item>
+        <item name="materialCardViewStyle">@style/FitCard</item>
+    </style>
+</resources>

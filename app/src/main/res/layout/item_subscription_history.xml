@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="@dimen/fit_space_lg"
+    android:layout_marginVertical="7dp"
+    app:cardCornerRadius="14dp"
+    app:cardElevation="2dp"
+    app:cardUseCompatPadding="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/fit_space_lg">
+
+        <TextView
+            android:id="@+id/tvSubscriptionStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/mypage_fern"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvSubscriptionPeriod"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/fit_space_sm"
+            style="@style/FitText.PrimaryBold15" />
+
+        <TextView
+            android:id="@+id/tvSubscriptionReceive"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:textColor="@color/mypage_text_secondary"
+            android:lineSpacingExtra="3dp" />
+
+        <TextView
+            android:id="@+id/tvSubscriptionMenus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:lineSpacingExtra="3dp"
+            android:textColor="@color/mypage_text_secondary" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnAddSubscriptionFavorite"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="14dp"
+            android:backgroundTint="@color/mypage_fennel"
+            android:text="즐겨찾기에 추가"
+            android:textColor="@color/mypage_text" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnCancelSubscription"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="@dimen/fit_space_sm"
+            android:backgroundTint="@color/fit_error_container"
+            android:text="구독 취소"
+            android:textColor="@color/fit_error" />
+
+        <com.google.android.material.button.MaterialButton
+            style="@style/MypagePrimaryButton"
+            android:id="@+id/btnResubscribe"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="@dimen/fit_space_sm"
+            android:text="다시 구독하기" />
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

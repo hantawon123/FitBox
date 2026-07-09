@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "239809709064",
+    "project_id": "fitbox-3d68f",
+    "storage_bucket": "fitbox-3d68f.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:239809709064:android:489a8296b7fa9b8cc03dbd",
+        "android_client_info": {
+          "package_name": "com.ssafy.fitbox"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBbAhaLHzCvEx7QR-RR0Schk0z2pYRyT8A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

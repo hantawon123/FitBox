@@ -1,0 +1,578 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_my_page_screen"
+    android:paddingStart="@dimen/fit_space_md"
+    android:paddingTop="@dimen/fit_space_lg"
+    android:paddingEnd="@dimen/fit_space_md"
+    android:paddingBottom="@dimen/fit_space_lg">
+
+    <TextView
+        android:id="@+id/tvRegTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/fit_space_md"
+        android:text="회원가입"
+        android:textColor="@color/mypage_text"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvRegStep"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="1 / 4 · 기본 정보"
+        android:textColor="@color/mypage_fern"
+        android:textSize="13sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvRegTitle" />
+
+    <com.google.android.material.progressindicator.LinearProgressIndicator
+        android:id="@+id/progressRegistration"
+        android:layout_width="0dp"
+        android:layout_height="6dp"
+        android:layout_marginTop="10dp"
+        android:max="4"
+        android:progress="1"
+        app:indicatorColor="@color/mypage_fern"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvRegStep"
+        app:trackColor="@color/mypage_fennel"
+        app:trackCornerRadius="3dp" />
+
+    <ViewFlipper
+        android:id="@+id/viewFlipper"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/fit_space_xl"
+        android:layout_marginBottom="@dimen/fit_space_lg"
+        app:layout_constraintBottom_toTopOf="@id/btnNext"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/progressRegistration">
+
+        <LinearLayout style="@style/RegStepLayout">
+
+            <TextView
+                style="@style/RegStepTitleText"
+                android:text="기본 정보를 입력해주세요" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/RegInputLayout"
+                android:hint="이름">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etRegName"
+                    style="@style/RegEditText"
+                    android:inputType="textPersonName" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/RegInputLayout"
+                android:hint="전화번호">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etRegPhone"
+                    style="@style/RegEditText"
+                    android:inputType="phone" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/RegInputLayout"
+                android:hint="나이">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etRegAge"
+                    style="@style/RegEditText"
+                    android:inputType="number" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="성별"
+                    android:textColor="@color/mypage_text_secondary"
+                    android:textSize="13sp" />
+
+            <RadioGroup
+                android:id="@+id/rgGender"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/fit_space_lg"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/rbMale"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/fit_space_lg"
+                    android:buttonTint="@color/profile_edit_radio_tint"
+                    android:textColor="@color/mypage_text"
+                    android:text="남성" />
+
+                <RadioButton
+                    android:id="@+id/rbFemale"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:buttonTint="@color/profile_edit_radio_tint"
+                    android:textColor="@color/mypage_text"
+                    android:text="여성" />
+
+            </RadioGroup>
+
+        </LinearLayout>
+
+        <LinearLayout style="@style/RegStepLayout">
+
+            <TextView
+                style="@style/RegStepTitleText"
+                android:text="신체 정보를 입력해주세요" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/RegInputLayout"
+                android:hint="키 (cm)">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etRegHeight"
+                    style="@style/RegEditText"
+                    android:inputType="numberDecimal" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/RegInputLayout"
+                android:hint="몸무게 (kg)">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etRegWeight"
+                    style="@style/RegEditText"
+                    android:inputType="numberDecimal" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/RegInputLayout"
+                android:hint="일주일 운동 횟수 (회)">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etRegActivityLevel"
+                    style="@style/RegEditText"
+                    android:inputType="number" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/fit_space_lg"
+                android:text="알레르기 (선택사항 - 다중선택 가능)"
+                android:textColor="@color/mypage_text_secondary"
+                android:textSize="13sp" />
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/chipGroupAllergy"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/fit_space_sm"
+                app:chipSpacingHorizontal="8dp"
+                app:chipSpacingVertical="4dp"
+                app:singleLine="false"
+                app:singleSelection="false">
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipEgg"
+                    style="@style/RegAllergyChip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="계란" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipMilk"
+                    style="@style/RegAllergyChip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="우유" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipLactose"
+                    style="@style/RegAllergyChip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="유당불내증" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipPeanut"
+                    style="@style/RegAllergyChip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="땅콩" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipSoybean"
+                    style="@style/RegAllergyChip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="대두" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipWheat"
+                    style="@style/RegAllergyChip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="밀" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipBuckwheat"
+                    style="@style/RegAllergyChip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="메밀" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipShrimp"
+                    style="@style/RegAllergyChip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="새우" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipCrab"
+                    style="@style/RegAllergyChip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="게" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipShellfish"
+                    style="@style/RegAllergyChip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="갑각류" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipFish"
+                    style="@style/RegAllergyChip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="생선" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipPeach"
+                    style="@style/RegAllergyChip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="복숭아" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipTomato"
+                    style="@style/RegAllergyChip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="토마토" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipWalnut"
+                    style="@style/RegAllergyChip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="호두" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chipPineNut"
+                    style="@style/RegAllergyChip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="잣" />
+            </com.google.android.material.chip.ChipGroup>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/fit_space_sm"
+                android:baselineAligned="false"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/RegInputLayout"
+                    android:layout_width="0dp"
+                    android:layout_height="42dp"
+                    android:layout_marginBottom="0dp"
+                    android:layout_weight="1"
+                    android:hint="직접 입력">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etRegCustomAllergy"
+                        style="@style/RegEditText"
+                        android:layout_height="match_parent"
+                        android:imeOptions="actionDone"
+                        android:inputType="text"
+                        android:singleLine="true" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnRegAddCustomAllergy"
+                    android:layout_width="wrap_content"
+                    android:layout_height="36dp"
+                    android:layout_marginStart="@dimen/fit_space_sm"
+                    android:backgroundTint="@color/mypage_fern"
+                    android:insetTop="0dp"
+                    android:insetBottom="0dp"
+                    android:minHeight="36dp"
+                    android:minWidth="72dp"
+                    android:paddingStart="@dimen/fit_space_md"
+                    android:paddingEnd="@dimen/fit_space_md"
+                    android:text="추가"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    app:cornerRadius="6dp" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout style="@style/RegStepLayout">
+
+            <TextView
+                style="@style/RegStepTitleText"
+                android:text="계정 정보를 입력해주세요" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="@dimen/fit_space_xs">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/RegInputLayout"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_marginBottom="0dp"
+                    android:hint="아이디">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etRegUserId"
+                        style="@style/RegEditText"
+                        android:inputType="text" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnCheckId"
+                    style="@style/FitSecondaryButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    android:layout_marginStart="@dimen/fit_space_sm"
+                    android:backgroundTint="@android:color/transparent"
+                    android:insetTop="0dp"
+                    android:insetBottom="0dp"
+                    android:minHeight="48dp"
+                    android:text="중복확인"
+                    android:textColor="@color/mypage_fern"
+                    app:cornerRadius="6dp"
+                    app:strokeColor="@color/mypage_fern" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvIdCheckResult"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/fit_space_xs"
+                android:layout_marginBottom="@dimen/fit_space_lg"
+                android:visibility="gone"
+                android:textSize="12sp" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilRegPassword"
+                style="@style/RegInputLayout"
+                android:hint="비밀번호"
+                app:errorIconDrawable="@null"
+                app:passwordToggleEnabled="true">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etRegPassword"
+                    style="@style/RegEditText"
+                    android:inputType="textPassword" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilRegPasswordConfirm"
+                style="@style/RegInputLayout"
+                android:hint="비밀번호 확인"
+                app:errorIconDrawable="@null"
+                app:passwordToggleEnabled="true">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etRegPasswordConfirm"
+                    style="@style/RegEditText"
+                    android:inputType="textPassword" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+        </LinearLayout>
+
+        <LinearLayout style="@style/RegStepLayout">
+
+            <TextView
+                style="@style/RegStepTitleText"
+                android:text="식사 목적을 선택해주세요" />
+
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:alignmentMode="alignMargins"
+                android:clipChildren="false"
+                android:clipToPadding="false"
+                android:columnCount="2"
+                android:columnOrderPreserved="false"
+                android:rowCount="2">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cardDiet"
+                    style="@style/RegPurposeCard">
+
+                    <LinearLayout style="@style/RegCardInnerLayout">
+                        <ImageView
+                            style="@style/RegCardImage"
+                            android:src="@drawable/diet_removebg"/>
+                        <TextView
+                            style="@style/RegCardText"
+                            android:text="다이어트" />
+                    </LinearLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cardBulk"
+                    style="@style/RegPurposeCard">
+
+                    <LinearLayout style="@style/RegCardInnerLayout">
+                        <ImageView
+                            style="@style/RegCardImage"
+                            android:src="@drawable/bulk_removebg"/>
+                        <TextView
+                            style="@style/RegCardText"
+                            android:text="벌크업" />
+                    </LinearLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cardMaintain"
+                    style="@style/RegPurposeCard">
+
+                    <LinearLayout style="@style/RegCardInnerLayout">
+                        <ImageView
+                            style="@style/RegCardImage"
+                            android:src="@drawable/maintainer_removebg"/>
+                        <TextView
+                            style="@style/RegCardText"
+                            android:text="유지어터" />
+                    </LinearLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cardPostWorkout"
+                    style="@style/RegPurposeCard">
+
+                    <LinearLayout style="@style/RegCardInnerLayout">
+                        <ImageView
+                            style="@style/RegCardImage"
+                            android:src="@drawable/badminton_removebg"/>
+                        <TextView
+                            style="@style/RegCardText"
+                            android:text="운동 후 식사" />
+                    </LinearLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+            </GridLayout>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnAiConsult"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="@dimen/fit_space_2xl"
+                android:backgroundTint="@color/mypage_honey"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:minHeight="48dp"
+                android:text="AI봇과 식사 목적 상담하기"
+                android:textColor="@color/mypage_primary_dark"
+                android:textStyle="bold"
+                app:cornerRadius="6dp"
+                app:icon="@drawable/ic_spark_line"
+                app:iconGravity="textStart"
+                app:iconPadding="6dp"
+                app:iconTint="@color/mypage_primary_dark" />
+
+        </LinearLayout>
+    </ViewFlipper>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnPrevious"
+        style="@style/FitSecondaryButton"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginEnd="@dimen/fit_space_sm"
+        android:layout_marginBottom="40dp"
+        android:backgroundTint="@android:color/transparent"
+        android:insetTop="0dp"
+        android:insetBottom="0dp"
+        android:minHeight="48dp"
+        android:text="이전"
+        android:textColor="@color/mypage_fern"
+        app:cornerRadius="6dp"
+        app:strokeColor="@color/mypage_fern"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/btnNext"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnNext"
+        style="@style/FitPrimaryButton"
+        android:layout_width="0dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="@dimen/fit_space_sm"
+        android:layout_marginBottom="40dp"
+        android:backgroundTint="@color/mypage_fern"
+        android:insetTop="0dp"
+        android:insetBottom="0dp"
+        android:minHeight="48dp"
+        android:text="다음"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:cornerRadius="6dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btnPrevious" />
+
+    <ProgressBar
+        android:id="@+id/progressRegistrationSubmit"
+        style="?android:attr/progressBarStyleSmall"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:indeterminate="true"
+        android:indeterminateTint="@color/white"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@id/btnNext"
+        app:layout_constraintEnd_toEndOf="@id/btnNext"
+        app:layout_constraintStart_toStartOf="@id/btnNext"
+        app:layout_constraintTop_toTopOf="@id/btnNext" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

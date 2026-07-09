@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="start"
+    android:orientation="horizontal"
+    android:paddingStart="@dimen/fit_space_md"
+    android:paddingTop="5dp"
+    android:paddingEnd="64dp"
+    android:paddingBottom="5dp">
+
+
+    <TextView
+        android:id="@+id/tvAiMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_bubble_ai"
+        android:paddingStart="@dimen/fit_space_md"
+        android:paddingTop="10dp"
+        android:paddingEnd="@dimen/fit_space_md"
+        android:paddingBottom="10dp"
+        android:textColor="@color/mypage_text"
+        android:textSize="15sp"
+        android:lineSpacingExtra="4dp"/>
+</LinearLayout>

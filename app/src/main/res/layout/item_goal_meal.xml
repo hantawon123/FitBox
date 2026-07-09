@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="86dp"
+    android:layout_marginBottom="@dimen/fit_space_sm"
+    android:background="@drawable/bg_goal_meal_row"
+    android:clickable="true"
+    android:focusable="true"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:padding="@dimen/fit_space_sm">
+
+    <LinearLayout
+        android:layout_width="30dp"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/ivGoalRankCrown"
+            android:layout_width="22dp"
+            android:layout_height="18dp"
+            android:contentDescription="@null"
+            android:src="@drawable/ic_crown_line"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/tvGoalRank"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:gravity="center"
+            android:includeFontPadding="false"
+            android:text="1"
+            android:textColor="@color/mypage_fern"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/ivGoalMealImage"
+        android:layout_width="66dp"
+        android:layout_height="66dp"
+        android:layout_marginStart="@dimen/fit_space_sm"
+        android:background="@android:color/white"
+        android:contentDescription="식단 이미지"
+        android:scaleType="centerCrop"
+        android:src="@drawable/logo_full_background_remove"
+        app:shapeAppearanceOverlay="@style/FitShapeRoundedImage6" />
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_marginStart="@dimen/fit_space_md"
+        android:layout_weight="1"
+        android:gravity="center_vertical"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvGoalMealName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="고단백 닭가슴살 도시락"
+            android:textColor="@color/mypage_text"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvGoalMealNutrition"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="탄 55g · 단 31g · 지 12g"
+            android:textColor="@color/mypage_text_secondary"
+            android:textSize="11sp" />
+
+        <TextView
+            android:id="@+id/tvGoalMealPrice"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:text="8,500원"
+            android:textColor="@color/mypage_fern"
+            android:textSize="13sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+</LinearLayout>

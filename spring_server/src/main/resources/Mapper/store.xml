@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+ "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ssafy.fitbox.mapper.StoreMapper">
+
+    <select id="selectAll" resultType="Store">
+        SELECT 
+            id, 
+            name, 
+            address, 
+            longitude, 
+            latitude
+        FROM store_table
+    </select>
+    
+    <select id="selectById" parameterType="Long" resultType="Store">
+        SELECT 
+            id, 
+            name, 
+            address, 
+            longitude, 
+            latitude
+        FROM store_table
+        WHERE id = #{id}
+    </select>
+
+    <insert id="insert" parameterType="Store" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO store_table (
+            name, 
+            address, 
+            longitude, 
+            latitude
+        ) VALUES (
+            #{name}, 
+            #{address}, 
+            #{longitude}, 
+            #{latitude}
+        )
+    </insert>
+	
+    <update id="update" parameterType="Store">
+        UPDATE store_table
+        SET 
+            name = #{name}, 
+            address = #{address}, 
+            longitude = #{longitude}, 
+            latitude = #{latitude}
+        WHERE id = #{id}
+    </update>
+	
+    <delete id="delete" parameterType="Long">
+        DELETE FROM store_table 
+        WHERE id = #{id}
+    </delete>
+    
+    <select id="findStoresByPickupDate" resultType="com.ssafy.fitbox.dto.Store">
+    SELECT
+        s.id,
+        s.name,
+        s.address,
+        s.longitude,
+        s.latitude,
+        0 AS totalCnt,
+        0 AS remainCnt
+    FROM store_table s
+    ORDER BY s.id ASC
+</select>
+
+<select id="findStoresByPickupDates" resultType="com.ssafy.fitbox.dto.Store">
+    SELECT
+        s.id,
+        s.name,
+        s.address,
+        s.longitude,
+        s.latitude,
+        0 AS totalCnt,
+        0 AS remainCnt
+    FROM store_table s
+    GROUP BY
+        s.id,
+        s.name,
+        s.address,
+        s.longitude,
+        s.latitude
+    ORDER BY s.id ASC
+</select>
+
+<select id="findPickupPointsByStoreId" resultType="com.ssafy.fitbox.dto.PickupPoint">
+    SELECT
+        pp.id,
+        pp.store_id AS storeId,
+        pp.name,
+        pp.address,
+        pp.longitude,
+        pp.latitude,
+        COALESCE(sdc.total_cnt, 0) AS totalCnt,
+        COALESCE(sdc.remain_cnt, 0) AS remainCnt
+    FROM pickup_point_table pp
+    LEFT JOIN store_daily_capacity_table sdc
+        ON pp.id = sdc.pickup_point_id
+       AND sdc.pickup_date = #{pickupDate}
+    WHERE pp.store_id = #{storeId}
+    ORDER BY pp.id ASC
+</select>
+
+<select id="findPickupPointsByBounds" resultType="com.ssafy.fitbox.dto.PickupPoint">
+    SELECT
+        pp.id,
+        pp.store_id AS storeId,
+        pp.name,
+        pp.address,
+        pp.longitude,
+        pp.latitude,
+        COALESCE(sdc.total_cnt, 0) AS totalCnt,
+        COALESCE(sdc.remain_cnt, 0) AS remainCnt
+    FROM pickup_point_table pp
+    LEFT JOIN store_daily_capacity_table sdc
+        ON pp.id = sdc.pickup_point_id
+       AND sdc.pickup_date = #{pickupDate}
+    WHERE pp.latitude BETWEEN #{south} AND #{north}
+      AND pp.longitude BETWEEN #{west} AND #{east}
+    ORDER BY pp.id ASC
+</select>
+
+<select id="findPickupPointCapacity" resultType="com.ssafy.fitbox.dto.PickupPoint">
+    SELECT
+        pp.id,
+        pp.store_id AS storeId,
+        pp.name,
+        pp.address,
+        pp.longitude,
+        pp.latitude,
+        COALESCE(sdc.total_cnt, 0) AS totalCnt,
+        COALESCE(sdc.remain_cnt, 0) AS remainCnt
+    FROM pickup_point_table pp
+    LEFT JOIN store_daily_capacity_table sdc
+        ON pp.id = sdc.pickup_point_id
+       AND sdc.pickup_date = #{pickupDate}
+    WHERE pp.id = #{pickupPointId}
+</select>
+	
+</mapper>

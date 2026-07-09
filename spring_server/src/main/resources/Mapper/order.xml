@@ -1,0 +1,635 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ssafy.fitbox.mapper.OrderMapper">
+
+    <resultMap id="orderMap" type="com.ssafy.fitbox.dto.Order">
+        <id property="id" column="id"/>
+        <result property="userId" column="user_id"/>
+        <result property="orderTime" column="order_time"/>
+        <result property="menuId" column="menu_id"/>
+        <result property="quantity" column="quantity"/>
+        <result property="receiveType" column="receive_type"/>
+        <result property="receiveDate" column="receive_date"/>
+        <result property="storeId" column="store_id"/>
+        <result property="pickupPointId" column="pickup_point_id"/>
+        <result property="address" column="address"/>
+        <result property="orderStatus" column="order_status"/>
+    </resultMap>
+
+    <resultMap id="orderResponseMap" type="com.ssafy.fitbox.dto.response.OrderResponse">
+        <id property="orderId" column="order_id"/>
+        <result property="subscriptionGroupId" column="subscription_group_id"/>
+        <result property="userId" column="user_id"/>
+        <result property="customerName" column="customer_name"/>
+        <result property="mealId" column="meal_id"/>
+        <result property="mealName" column="meal_name"/>
+        <result property="quantity" column="quantity"/>
+        <result property="totalPrice" column="total_price"/>
+        <result property="receiveType" column="receive_type"/>
+        <result property="receiveDate" column="receive_date"/>
+
+        <result property="dateStart" column="date_start"/>
+        <result property="dateEnd" column="date_end"/>
+        <result property="mon" column="mon"/>
+        <result property="tue" column="tue"/>
+        <result property="wed" column="wed"/>
+        <result property="thu" column="thu"/>
+        <result property="fri" column="fri"/>
+        <result property="sat" column="sat"/>
+        <result property="sun" column="sun"/>
+
+        <result property="storeId" column="store_id"/>
+        <result property="storeName" column="store_name"/>
+        <result property="storeAddress" column="store_address"/>
+        <result property="pickupPointId" column="pickup_point_id"/>
+        <result property="pickupPointName" column="pickup_point_name"/>
+        <result property="pickupPointAddress" column="pickup_point_address"/>
+        <result property="lockerNumber" column="locker_number"/>
+        <result property="address" column="address"/>
+        <result property="orderStatus" column="order_status"/>
+
+        <result property="paymentStatus" column="payment_status"/>
+        <result property="orderType" column="order_type"/>
+        <result property="subscriptionStatus" column="subscription_status"/>
+        <result property="orderTime" column="order_time"/>
+        <result property="subscriptionItemsText" column="subscription_items_text"/>
+    </resultMap>
+
+    <select id="selectAll" resultMap="orderMap">
+        SELECT
+            id,
+            user_id,
+            order_time,
+            menu_id,
+            quantity,
+            receive_type,
+            receive_date,
+            store_id,
+            pickup_point_id,
+            address,
+            order_status
+        FROM order_table
+        ORDER BY id DESC
+    </select>
+
+    <select id="selectById" parameterType="long" resultMap="orderMap">
+        SELECT
+            id,
+            user_id,
+            order_time,
+            menu_id,
+            quantity,
+            receive_type,
+            receive_date,
+            store_id,
+            pickup_point_id,
+            address,
+            order_status
+        FROM order_table
+        WHERE id = #{id}
+    </select>
+
+    <insert id="insert" parameterType="com.ssafy.fitbox.dto.Order">
+        INSERT INTO order_table (
+            user_id,
+            menu_id,
+            quantity,
+            receive_type,
+            receive_date,
+            store_id,
+            pickup_point_id,
+            address,
+            order_status
+        )
+        VALUES (
+            #{userId},
+            #{menuId},
+            #{quantity},
+            #{receiveType},
+            #{receiveDate},
+            #{storeId},
+            #{pickupPointId},
+            #{address},
+            COALESCE(#{orderStatus}, 'ORDER_REVIEW')
+        )
+    </insert>
+
+    <update id="update" parameterType="com.ssafy.fitbox.dto.Order">
+        UPDATE order_table
+        SET
+            user_id = #{userId},
+            menu_id = #{menuId},
+            quantity = #{quantity},
+            receive_type = #{receiveType},
+            receive_date = #{receiveDate},
+            store_id = #{storeId},
+            pickup_point_id = #{pickupPointId},
+            address = #{address},
+            order_status = COALESCE(#{orderStatus}, order_status)
+        WHERE id = #{id}
+    </update>
+
+    <delete id="delete" parameterType="long">
+        DELETE FROM order_table
+        WHERE id = #{id}
+    </delete>
+
+    <insert id="insertOrder">
+        INSERT INTO order_table (
+            user_id,
+            menu_id,
+            quantity,
+            receive_type,
+            receive_date,
+            store_id,
+            pickup_point_id,
+            address,
+            order_time
+        )
+        VALUES (
+            #{userId},
+            #{mealId},
+            #{quantity},
+            #{receiveType},
+            #{receiveDate},
+            #{storeId},
+            #{pickupPointId},
+            #{address},
+            COALESCE(#{orderTime}, CURRENT_TIMESTAMP)
+        )
+    </insert>
+
+    <select id="findLastInsertId" resultType="long">
+        SELECT LAST_INSERT_ID()
+    </select>
+
+    <insert id="insertPayment">
+        INSERT INTO payment_table (
+            order_id,
+            payment_method,
+            payment_status,
+            amount
+        )
+        VALUES (
+            #{orderId},
+            #{paymentMethod},
+            #{paymentStatus},
+            #{amount}
+        )
+    </insert>
+
+    <select id="findOrderById" resultMap="orderResponseMap">
+        SELECT
+            o.id AS order_id,
+            NULL AS subscription_group_id,
+            o.user_id,
+            u.name AS customer_name,
+            o.menu_id AS meal_id,
+            m.name AS meal_name,
+            o.quantity,
+            m.price * o.quantity AS total_price,
+            o.receive_type,
+            o.receive_date,
+
+            NULL AS date_start,
+            NULL AS date_end,
+            NULL AS mon,
+            NULL AS tue,
+            NULL AS wed,
+            NULL AS thu,
+            NULL AS fri,
+            NULL AS sat,
+            NULL AS sun,
+
+            o.store_id,
+            s.name AS store_name,
+            s.address AS store_address,
+            o.pickup_point_id,
+            pp.name AS pickup_point_name,
+            pp.address AS pickup_point_address,
+            o.locker_number,
+            o.address,
+            o.order_status,
+
+            p.payment_status,
+            'SINGLE' AS order_type,
+            NULL AS subscription_status,
+            o.order_time,
+            NULL AS subscription_items_text
+        FROM order_table o
+        JOIN meal_table m
+            ON o.menu_id = m.id
+        JOIN user_table u
+            ON o.user_id = u.id
+        LEFT JOIN store_table s
+            ON o.store_id = s.id
+        LEFT JOIN pickup_point_table pp
+            ON o.pickup_point_id = pp.id
+        LEFT JOIN payment_table p
+            ON o.id = p.order_id
+        WHERE o.id = #{orderId}
+    </select>
+
+   <select id="findOrdersByUserId" resultMap="orderResponseMap">
+    SELECT *
+    FROM (
+        SELECT
+            o.id AS order_id,
+            NULL AS subscription_group_id,
+            o.user_id,
+            o.menu_id AS meal_id,
+            m.name AS meal_name,
+            o.quantity,
+            m.price * o.quantity AS total_price,
+            o.receive_type,
+            o.receive_date,
+
+            NULL AS date_start,
+            NULL AS date_end,
+            NULL AS mon,
+            NULL AS tue,
+            NULL AS wed,
+            NULL AS thu,
+            NULL AS fri,
+            NULL AS sat,
+            NULL AS sun,
+
+            o.store_id,
+            s.name AS store_name,
+            s.address AS store_address,
+            o.pickup_point_id,
+            pp.name AS pickup_point_name,
+            pp.address AS pickup_point_address,
+            o.locker_number,
+            o.address,
+            o.order_status,
+
+            p.payment_status,
+            'SINGLE' AS order_type,
+            NULL AS subscription_status,
+            o.order_time,
+            NULL AS subscription_items_text
+        FROM order_table o
+        JOIN meal_table m
+            ON o.menu_id = m.id
+        LEFT JOIN store_table s
+            ON o.store_id = s.id
+        LEFT JOIN pickup_point_table pp
+            ON o.pickup_point_id = pp.id
+        LEFT JOIN payment_table p
+            ON o.id = p.order_id
+        WHERE o.user_id = #{userId}
+
+        UNION ALL
+
+        SELECT
+            sg.id AS order_id,
+            sg.id AS subscription_group_id,
+            sg.user_id,
+            NULL AS meal_id,
+
+            CASE
+                WHEN COUNT(so.id) = 1 THEN
+                    SUBSTRING_INDEX(
+                        GROUP_CONCAT(m.name ORDER BY so.date_start, so.id SEPARATOR ', '),
+                        ', ',
+                        1
+                    )
+                ELSE
+                    CONCAT(
+                        SUBSTRING_INDEX(
+                            GROUP_CONCAT(m.name ORDER BY so.date_start, so.id SEPARATOR ', '),
+                            ', ',
+                            1
+                        ),
+                        ' 외 ',
+                        COUNT(so.id) - 1,
+                        '개'
+                    )
+            END AS meal_name,
+
+            SUM(so.quantity) AS quantity,
+            SUM(m.price * so.quantity) AS total_price,
+            sg.receive_type,
+            NULL AS receive_date,
+
+            MIN(so.date_start) AS date_start,
+            MAX(so.date_end) AS date_end,
+            NULL AS mon,
+            NULL AS tue,
+            NULL AS wed,
+            NULL AS thu,
+            NULL AS fri,
+            NULL AS sat,
+            NULL AS sun,
+
+            sg.store_id,
+            s.name AS store_name,
+            s.address AS store_address,
+            NULL AS pickup_point_id,
+            NULL AS pickup_point_name,
+            NULL AS pickup_point_address,
+            NULL AS locker_number,
+            sg.address,
+            NULL AS order_status,
+
+            NULL AS payment_status,
+            'SUBSCRIPTION' AS order_type,
+            sg.status AS subscription_status,
+            sg.order_time,
+
+            items_summary.subscription_items_text AS subscription_items_text
+        FROM subscription_group_table sg
+        JOIN subscript_order_table so
+            ON sg.id = so.subscription_group_id
+        JOIN meal_table m
+            ON m.id = COALESCE(
+                so.mon,
+                so.tue,
+                so.wed,
+                so.thu,
+                so.fri,
+                so.sat,
+                so.sun
+            )
+        LEFT JOIN store_table s
+            ON sg.store_id = s.id
+        LEFT JOIN (
+            SELECT
+                daily_items.subscription_group_id,
+                GROUP_CONCAT(
+                    CONCAT(
+                        DATE_FORMAT(daily_items.date_start, '%Y-%m-%d'),
+                        ' / ',
+                        daily_items.menu_text
+                    )
+                    ORDER BY daily_items.date_start
+                    SEPARATOR '\n'
+                ) AS subscription_items_text
+            FROM (
+                SELECT
+                    so2.subscription_group_id,
+                    so2.date_start,
+                    GROUP_CONCAT(
+                        CONCAT(
+                            m2.name,
+                            ' ',
+                            so2.quantity,
+                            '개'
+                        )
+                        ORDER BY so2.id
+                        SEPARATOR ', '
+                    ) AS menu_text
+                FROM subscript_order_table so2
+                JOIN meal_table m2
+                    ON m2.id = COALESCE(
+                        so2.mon,
+                        so2.tue,
+                        so2.wed,
+                        so2.thu,
+                        so2.fri,
+                        so2.sat,
+                        so2.sun
+                    )
+                WHERE so2.subscription_group_id IS NOT NULL
+                GROUP BY
+                    so2.subscription_group_id,
+                    so2.date_start
+            ) daily_items
+            GROUP BY daily_items.subscription_group_id
+        ) items_summary
+            ON sg.id = items_summary.subscription_group_id
+        WHERE sg.user_id = #{userId}
+        GROUP BY
+            sg.id,
+            sg.user_id,
+            sg.receive_type,
+            sg.store_id,
+            s.name,
+            s.address,
+            sg.address,
+            sg.status,
+            sg.order_time,
+            items_summary.subscription_items_text
+
+        UNION ALL
+
+        SELECT
+            so.id AS order_id,
+            NULL AS subscription_group_id,
+            so.user_id,
+            NULL AS meal_id,
+
+            CASE
+                WHEN COALESCE(so.mon, so.tue, so.wed, so.thu, so.fri, so.sat, so.sun) IS NULL
+                    THEN '기존 구독 주문'
+                ELSE m.name
+            END AS meal_name,
+
+            so.quantity AS quantity,
+            CASE
+                WHEN m.price IS NULL THEN 0
+                ELSE m.price * so.quantity
+            END AS total_price,
+            so.receive_type,
+            NULL AS receive_date,
+
+            so.date_start,
+            so.date_end,
+            so.mon,
+            so.tue,
+            so.wed,
+            so.thu,
+            so.fri,
+            so.sat,
+            so.sun,
+
+            so.store_id,
+            s.name AS store_name,
+            s.address AS store_address,
+            NULL AS pickup_point_id,
+            NULL AS pickup_point_name,
+            NULL AS pickup_point_address,
+            NULL AS locker_number,
+            so.address,
+            NULL AS order_status,
+
+            NULL AS payment_status,
+            'SUBSCRIPTION' AS order_type,
+            NULL AS subscription_status,
+            so.order_time,
+
+            CASE
+                WHEN m.name IS NULL THEN
+                    CONCAT(
+                        DATE_FORMAT(so.date_start, '%Y-%m-%d'),
+                        ' ~ ',
+                        DATE_FORMAT(so.date_end, '%Y-%m-%d'),
+                        ' / 기존 반복 구독'
+                    )
+                ELSE
+                    CONCAT(
+                        DATE_FORMAT(so.date_start, '%Y-%m-%d'),
+                        ' ~ ',
+                        DATE_FORMAT(so.date_end, '%Y-%m-%d'),
+                        ' / ',
+                        m.name,
+                        ' / ',
+                        so.quantity,
+                        '개'
+                    )
+            END AS subscription_items_text
+        FROM subscript_order_table so
+        LEFT JOIN meal_table m
+            ON m.id = COALESCE(
+                so.mon,
+                so.tue,
+                so.wed,
+                so.thu,
+                so.fri,
+                so.sat,
+                so.sun
+            )
+        LEFT JOIN store_table s
+            ON so.store_id = s.id
+        WHERE so.user_id = #{userId}
+          AND so.subscription_group_id IS NULL
+    ) order_history
+    ORDER BY order_time DESC
+</select>
+
+    <select id="findAllSingleOrders" resultMap="orderResponseMap">
+        SELECT
+            o.id AS order_id,
+            NULL AS subscription_group_id,
+            o.user_id,
+            u.name AS customer_name,
+            o.menu_id AS meal_id,
+            m.name AS meal_name,
+            o.quantity,
+            m.price * o.quantity AS total_price,
+            o.receive_type,
+            o.receive_date,
+            NULL AS date_start,
+            NULL AS date_end,
+            NULL AS mon,
+            NULL AS tue,
+            NULL AS wed,
+            NULL AS thu,
+            NULL AS fri,
+            NULL AS sat,
+            NULL AS sun,
+            o.store_id,
+            s.name AS store_name,
+            s.address AS store_address,
+            o.pickup_point_id,
+            pp.name AS pickup_point_name,
+            pp.address AS pickup_point_address,
+            o.locker_number,
+            o.address,
+            o.order_status,
+            p.payment_status,
+            'SINGLE' AS order_type,
+            NULL AS subscription_status,
+            o.order_time,
+            NULL AS subscription_items_text
+        FROM order_table o
+        JOIN meal_table m ON o.menu_id = m.id
+        JOIN user_table u ON o.user_id = u.id
+        LEFT JOIN store_table s ON o.store_id = s.id
+        LEFT JOIN pickup_point_table pp ON o.pickup_point_id = pp.id
+        LEFT JOIN payment_table p ON o.id = p.order_id
+        ORDER BY o.id ASC
+    </select>
+
+    <update id="updateOrderStatus">
+        UPDATE order_table
+        SET order_status = #{orderStatus}
+        WHERE id = #{orderId}
+    </update>
+
+    <update id="updateMatchingOrderStatus">
+        UPDATE order_table
+        SET order_status = #{orderStatus}
+        WHERE user_id = #{order.userId}
+          AND order_time = #{order.orderTime}
+          AND receive_type = #{order.receiveType}
+          AND (receive_date &lt;=&gt; #{order.receiveDate})
+          AND (store_id &lt;=&gt; #{order.storeId})
+          AND (pickup_point_id &lt;=&gt; #{order.pickupPointId})
+          AND (address &lt;=&gt; #{order.address})
+    </update>
+
+    <update id="assignLocker">
+        UPDATE order_table
+        SET locker_number = #{lockerNumber},
+            order_status = 'READY'
+        WHERE id = #{orderId}
+          AND receive_type = 'PICKUP_POINT'
+    </update>
+
+    <update id="assignLockerToMatchingOrders">
+        UPDATE order_table
+        SET locker_number = #{lockerNumber},
+            order_status = 'READY'
+        WHERE user_id = #{order.userId}
+          AND order_time = #{order.orderTime}
+          AND receive_type = 'PICKUP_POINT'
+          AND (receive_date &lt;=&gt; #{order.receiveDate})
+          AND (store_id &lt;=&gt; #{order.storeId})
+          AND (pickup_point_id &lt;=&gt; #{order.pickupPointId})
+          AND (address &lt;=&gt; #{order.address})
+    </update>
+
+    <select id="countActiveLocker" resultType="int">
+        SELECT COUNT(*)
+        FROM order_table
+        WHERE pickup_point_id = #{pickupPointId}
+          AND receive_date = #{receiveDate}
+          AND locker_number = #{lockerNumber}
+          AND order_status = 'READY'
+          AND id != #{excludeOrderId}
+    </select>
+
+    <select id="countActiveLockerExcludingOrderGroup" resultType="int">
+        SELECT COUNT(*)
+        FROM order_table
+        WHERE pickup_point_id = #{order.pickupPointId}
+          AND receive_date = #{order.receiveDate}
+          AND locker_number = #{lockerNumber}
+          AND order_status = 'READY'
+          AND NOT (
+              user_id = #{order.userId}
+              AND order_time = #{order.orderTime}
+              AND receive_type = #{order.receiveType}
+              AND (receive_date &lt;=&gt; #{order.receiveDate})
+              AND (store_id &lt;=&gt; #{order.storeId})
+              AND (pickup_point_id &lt;=&gt; #{order.pickupPointId})
+              AND (address &lt;=&gt; #{order.address})
+          )
+    </select>
+
+    <update id="completePickup">
+        UPDATE order_table
+        SET order_status = 'PICKED_UP'
+        WHERE id = #{orderId}
+          AND order_status = 'READY'
+    </update>
+
+    <update id="completeMatchingPickup">
+        UPDATE order_table
+        SET order_status = 'PICKED_UP'
+        WHERE user_id = #{order.userId}
+          AND order_time = #{order.orderTime}
+          AND receive_type = 'PICKUP_POINT'
+          AND order_status = 'READY'
+          AND (receive_date &lt;=&gt; #{order.receiveDate})
+          AND (store_id &lt;=&gt; #{order.storeId})
+          AND (pickup_point_id &lt;=&gt; #{order.pickupPointId})
+          AND (address &lt;=&gt; #{order.address})
+    </update>
+
+</mapper>

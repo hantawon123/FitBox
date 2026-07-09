@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssafy.fitbox.mapper.UserPreferenceMapper">
+    <select id="selectByUserId" parameterType="int" resultType="com.ssafy.fitbox.dto.UserPreference">
+        SELECT id, user_id as userId, preference_prompt as preferencePrompt
+        FROM user_preference_table WHERE user_id = #{userId}
+    </select>
+
+    <insert id="insertOrUpdate" parameterType="com.ssafy.fitbox.dto.UserPreference">
+        INSERT INTO user_preference_table (user_id, preference_prompt)
+        VALUES (#{userId}, #{preferencePrompt})
+        ON DUPLICATE KEY UPDATE preference_prompt = #{preferencePrompt}
+    </insert>
+</mapper>

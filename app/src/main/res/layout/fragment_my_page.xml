@@ -1,0 +1,465 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_my_page_screen"
+    android:clipToPadding="false"
+    android:fillViewport="true"
+    tools:context=".fragment.MyPageFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingStart="0dp"
+        android:paddingTop="@dimen/fit_space_2xl"
+        android:paddingEnd="@dimen/fit_space_md"
+        android:paddingBottom="@dimen/fit_space_2xl">
+
+        <TextView
+            android:id="@+id/tvMyPageTitle"
+            style="@style/FitText.PrimaryBold26"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/fit_space_md"
+            android:text="마이페이지"
+            android:textColor="@color/mypage_text" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/fit_space_md"
+            android:layout_marginTop="@dimen/fit_space_xs"
+            android:layout_marginBottom="@dimen/fit_space_sm"
+            android:text="내 정보와 맞춤 식단을 한곳에서 확인해요"
+            android:textColor="@color/mypage_text_secondary"
+            android:textSize="13sp" />
+
+        <LinearLayout
+            android:id="@+id/cardProfile"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/fit_space_md"
+            android:layout_marginBottom="@dimen/fit_space_lg"
+            android:background="@android:color/transparent"
+            android:elevation="0dp"
+            android:orientation="vertical"
+            android:padding="@dimen/fit_space_lg">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <FrameLayout
+                        android:layout_width="64dp"
+                        android:layout_height="64dp"
+                        android:background="@drawable/bg_my_page_avatar">
+
+                        <ImageView
+                            android:layout_width="28dp"
+                            android:layout_height="28dp"
+                            android:layout_gravity="center"
+                            android:contentDescription="@null"
+                            android:src="@drawable/ic_profile_line"
+                            app:tint="@color/mypage_fern" />
+                    </FrameLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/fit_space_md"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tvProfileName"
+                            style="@style/FitText.PrimaryBold18"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="로그인이 필요해요"
+                            android:textColor="@color/mypage_text" />
+
+                        <TextView
+                            android:id="@+id/tvUserPurpose"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/fit_space_xs"
+                            android:background="@drawable/bg_my_page_goal_marker"
+                            android:includeFontPadding="false"
+                            android:paddingStart="2dp"
+                            android:paddingTop="1dp"
+                            android:paddingEnd="2dp"
+                            android:paddingBottom="4dp"
+                            android:text="현재 목표"
+                            android:textColor="@color/mypage_primary_dark"
+                            android:textSize="12sp"
+                            android:textStyle="bold"
+                            android:visibility="gone" />
+                    </LinearLayout>
+
+                    <ImageButton
+                        android:id="@+id/btnEditProfile"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="@android:color/transparent"
+                        android:contentDescription="회원 정보 수정"
+                        android:padding="8dp"
+                        android:scaleType="center"
+                        android:src="@drawable/ic_edit_line"
+                        android:visibility="gone" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/layoutBodyInfo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/fit_space_md"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:id="@+id/tvBodySummary"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ellipsize="end"
+                        android:includeFontPadding="false"
+                        android:maxLines="1"
+                        android:text="키 0cm · 몸무게 0kg · 활동량 주 0회"
+                        android:textColor="@color/mypage_text"
+                        android:textSize="13sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvActivitySummary"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/fit_space_sm"
+                        android:background="@drawable/bg_my_page_info_row"
+                        android:padding="@dimen/fit_space_md"
+                        android:text="활동량 주 0회"
+                        android:textColor="@color/mypage_text_secondary"
+                        android:textSize="13sp"
+                        android:visibility="gone" />
+
+                    <TextView
+                        android:id="@+id/tvAllergySummary"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/fit_space_sm"
+                        android:ellipsize="end"
+                        android:includeFontPadding="false"
+                        android:maxLines="1"
+                        android:text="알러지 없음"
+                        android:textColor="@color/mypage_text_secondary"
+                        android:textSize="12sp" />
+
+                </LinearLayout>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnGoLogin"
+                    style="@style/FitPrimaryButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="@dimen/fit_space_lg"
+                    android:backgroundTint="@color/mypage_fern"
+                    android:text="로그인하러 가기"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:visibility="visible"
+                    app:cornerRadius="6dp" />
+        </LinearLayout>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardMyPageAiReport"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/fit_space_md"
+            android:layout_marginBottom="@dimen/fit_space_lg"
+            android:visibility="gone"
+            app:cardBackgroundColor="@color/mypage_warm_white"
+            app:cardCornerRadius="6dp"
+            app:cardElevation="3dp"
+            app:cardUseCompatPadding="true"
+            app:strokeColor="@android:color/transparent"
+            app:strokeWidth="0dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:animateLayoutChanges="true"
+                android:background="@drawable/bg_my_page_ai_panel"
+                android:orientation="vertical"
+                android:padding="@dimen/fit_space_xl">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <FrameLayout
+                        android:layout_width="28dp"
+                        android:layout_height="28dp">
+
+                        <ImageView
+                            android:layout_width="22dp"
+                            android:layout_height="22dp"
+                            android:layout_gravity="center"
+                            android:contentDescription="@null"
+                            android:src="@drawable/ic_spark_line"
+                            app:tint="@color/mypage_fennel" />
+                    </FrameLayout>
+
+                    <TextView
+                        android:id="@+id/tvMyPageAiTitle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/fit_space_md"
+                        android:layout_weight="1"
+                        android:fontFamily="sans"
+                        android:text="AI 맞춤 식단 분석"
+                        android:textColor="@color/mypage_text"
+                        android:textSize="15sp"
+                        android:textStyle="normal" />
+
+                    <ImageButton
+                        android:id="@+id/tvAiExpandToggle"
+                        android:layout_width="38dp"
+                        android:layout_height="34dp"
+                        android:background="@android:color/transparent"
+                        android:clickable="true"
+                        android:contentDescription="식단 분석 펼치기"
+                        android:focusable="true"
+                        android:padding="@dimen/fit_space_xs"
+                        android:scaleType="center"
+                        android:src="@drawable/ic_expand_more"
+                        android:visibility="gone" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/layoutAiLoading"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:paddingTop="@dimen/fit_space_2xl"
+                    android:paddingBottom="@dimen/fit_space_2xl"
+                    android:visibility="gone">
+
+                    <ProgressBar
+                        android:id="@+id/pbAiLoading"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:indeterminateTint="@color/mypage_fennel" />
+
+                    <TextView
+                        android:id="@+id/tvAiLoadingStatus"
+                        style="@style/FitText.Secondary12"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/fit_space_md"
+                        android:text="AI가 최적의 조합을 분석하고 있어요"
+                        android:textColor="@color/mypage_text_secondary" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/layoutAiResultContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/fit_space_md"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/fit_space_sm"
+                        android:baselineAligned="false"
+                        android:orientation="horizontal"
+                        android:paddingVertical="@dimen/fit_space_xs">
+
+                        <TextView
+                            android:id="@+id/tvCarb"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="탄수화물\n0g"
+                            android:textColor="@color/mypage_text_secondary"
+                            android:textSize="12sp" />
+
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="28dp"
+                            android:layout_gravity="center_vertical"
+                            android:background="@color/fit_surface_variant" />
+
+                        <TextView
+                            android:id="@+id/tvProtein"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="단백질\n0g"
+                            android:textColor="@color/mypage_text_secondary"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="28dp"
+                            android:layout_gravity="center_vertical"
+                            android:background="@color/fit_surface_variant" />
+
+                        <TextView
+                            android:id="@+id/tvFat"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:text="지방\n0g"
+                            android:textColor="@color/mypage_text_secondary"
+                            android:textSize="12sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/layoutIngredientsList"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/fit_space_sm"
+                        android:orientation="vertical" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/fit_space_sm"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/tvTotalCalories"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="0 kcal"
+                            android:textColor="@color/mypage_text"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tvTotalPrice"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="end"
+                            android:text="가격: 0원"
+                            android:textColor="@color/mypage_text"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+
+                        <ImageButton
+                            android:id="@+id/btnAddAiFavorite"
+                            android:layout_width="34dp"
+                            android:layout_height="34dp"
+                            android:layout_marginStart="@dimen/fit_space_xs"
+                            android:background="@android:color/transparent"
+                            android:contentDescription="추천 식단 즐겨찾기에 추가"
+                            android:padding="7dp"
+                            android:scaleType="center"
+                            android:src="@drawable/ic_heart_line"
+                            app:tint="@color/mypage_peach" />
+                    </LinearLayout>
+
+                    <View
+                        style="@style/FitDivider.Subtle"
+                        android:layout_marginStart="@dimen/fit_space_md"
+                        android:layout_marginTop="@dimen/fit_space_xs"
+                        android:layout_marginEnd="@dimen/fit_space_md"
+                        android:layout_marginBottom="@dimen/fit_space_xs" />
+
+                    <TextView
+                        android:id="@+id/tvAiReason"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/fit_space_xs"
+                        android:background="@android:color/transparent"
+                        android:lineSpacingExtra="4dp"
+                        android:text="추천 근거..."
+                        android:textColor="@color/mypage_text_secondary" />
+                </LinearLayout>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardMyPageMenus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/fit_space_md"
+            android:layout_marginBottom="@dimen/fit_space_lg"
+            app:cardBackgroundColor="@color/mypage_warm_white"
+            app:cardCornerRadius="6dp"
+            app:cardElevation="3dp"
+            app:cardUseCompatPadding="true"
+            app:strokeColor="@android:color/transparent"
+            app:strokeWidth="0dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_my_page_menu_panel"
+                android:orientation="vertical"
+                android:paddingVertical="@dimen/fit_space_sm">
+
+                <include
+                    android:id="@+id/layoutManageAddress"
+                    layout="@layout/item_my_page_menu_row" />
+
+                <View
+                    style="@style/FitDivider.Subtle"
+                    android:layout_marginStart="@dimen/fit_space_lg"
+                    android:layout_marginEnd="@dimen/fit_space_lg" />
+
+                <include
+                    android:id="@+id/layoutManageSubscription"
+                    layout="@layout/item_my_page_menu_row" />
+
+                <View
+                    style="@style/FitDivider.Subtle"
+                    android:layout_marginStart="@dimen/fit_space_lg"
+                    android:layout_marginEnd="@dimen/fit_space_lg" />
+
+                <include
+                    android:id="@+id/layoutOrderHistory"
+                    layout="@layout/item_my_page_menu_row" />
+
+                <View
+                    style="@style/FitDivider.Subtle"
+                    android:layout_marginStart="@dimen/fit_space_lg"
+                    android:layout_marginEnd="@dimen/fit_space_lg" />
+
+                <include
+                    android:id="@+id/layoutFavoriteMeals"
+                    layout="@layout/item_my_page_menu_row" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnLogout"
+            style="@style/Widget.Material3.Button.TextButton"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginStart="@dimen/fit_space_md"
+            android:background="@android:color/transparent"
+            android:text="로그아웃"
+            android:textColor="@color/logout_button_tint"
+            android:textSize="14sp"
+            app:backgroundTint="@android:color/transparent"
+            app:icon="@drawable/ic_logout_line"
+            app:iconGravity="textStart"
+            app:iconTint="@color/logout_button_tint"
+            app:rippleColor="@android:color/transparent" />
+    </LinearLayout>
+</ScrollView>

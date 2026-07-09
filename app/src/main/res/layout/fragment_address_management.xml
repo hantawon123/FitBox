@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/mypage_background"
+    android:orientation="vertical">
+
+    <TextView
+        style="@style/FitText.PrimaryBold24"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/fit_space_xl"
+        android:text="배송지 관리" />
+
+    <com.google.android.material.card.MaterialCardView
+        style="@style/MypageCard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/fit_space_lg">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/fit_space_lg">
+
+            <EditText
+                android:id="@+id/etRoadAddress"
+                android:layout_width="match_parent"
+                android:layout_height="54dp"
+                android:background="@color/mypage_surface"
+                android:clickable="true"
+                android:cursorVisible="false"
+                android:focusable="false"
+                android:foreground="?attr/selectableItemBackground"
+                android:hint="도로명 주소 검색"
+                android:paddingHorizontal="14dp"
+                android:textColor="@color/mypage_text"
+                android:textColorHint="@color/mypage_text_secondary"
+                android:textSize="15sp" />
+
+            <EditText
+                android:id="@+id/etAddressDetail"
+                android:layout_width="match_parent"
+                android:layout_height="54dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/mypage_surface"
+                android:hint="상세주소 입력 (동/호수 등)"
+                android:inputType="textPostalAddress"
+                android:paddingHorizontal="14dp"
+                android:textColor="@color/mypage_text"
+                android:textColorHint="@color/mypage_text_secondary"
+                android:textSize="15sp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnAddAddress"
+                style="@style/MypagePrimaryButton"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="10dp"
+                android:text="이 배송지 저장"
+                app:icon="@drawable/ic_save_line"
+                app:iconGravity="textStart"
+                app:iconPadding="@dimen/fit_space_sm"
+                app:iconTint="@color/mypage_warm_white" />
+
+        </LinearLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <TextView
+        android:id="@+id/tvAddressEmpty"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:gravity="center"
+        android:text="등록된 배송지가 없습니다."
+        android:textColor="@color/mypage_text_secondary"
+        android:textSize="16sp"
+        android:visibility="gone" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvAddresses"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="10dp"
+        android:layout_weight="1" />
+
+</LinearLayout>

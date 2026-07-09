@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/mypage_background"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/ivDetailImage"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:background="@android:color/white"
+            android:contentDescription="식단 이미지"
+            android:scaleType="centerCrop"
+            android:src="@drawable/logo_full_background_remove" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/fit_space_xl">
+
+            <TextView
+                android:id="@+id/tvDetailName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="건강 맞춤 식단"
+                style="@style/FitText.PrimaryBold24" />
+
+            <com.google.android.material.card.MaterialCardView
+                style="@style/MypageOutlinedCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="18dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@color/mypage_fennel"
+                        android:paddingHorizontal="10dp"
+                        android:paddingVertical="5dp"
+                        android:text="식단 영양 정보"
+                        style="@style/FitText.PrimaryDarkBold12" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/fit_space_lg"
+                        android:text="총 칼로리"
+                        style="@style/FitText.Secondary13" />
+
+                    <TextView
+                        android:id="@+id/tvDetailCalories"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:text="456.5 kcal"
+                        style="@style/FitText.PrimaryBold28" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/fit_space_lg"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            style="@style/FitMacroColumn">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="탄수화물"
+                                style="@style/FitText.Secondary12" />
+
+                            <TextView
+                                android:id="@+id/tvDetailCarbohydrate"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="3dp"
+                                android:text="43.6g"
+                                style="@style/FitText.PrimaryBold15" />
+
+                            <TextView
+                                android:id="@+id/tvDetailCarbohydrateRatio"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="2dp"
+                                android:text="38%"
+                                style="@style/FitText.PrimaryAccent13" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            style="@style/FitMacroColumn">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="단백질"
+                                style="@style/FitText.Secondary12" />
+
+                            <TextView
+                                android:id="@+id/tvDetailProtein"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="3dp"
+                                android:text="53.3g"
+                                style="@style/FitText.PrimaryBold15" />
+
+                            <TextView
+                                android:id="@+id/tvDetailProteinRatio"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="2dp"
+                                android:text="47%"
+                                style="@style/FitText.PrimaryAccent13" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            style="@style/FitMacroColumn">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="지방"
+                                style="@style/FitText.Secondary12" />
+
+                            <TextView
+                                android:id="@+id/tvDetailFat"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="3dp"
+                                android:text="6.9g"
+                                style="@style/FitText.PrimaryBold15" />
+
+                            <TextView
+                                android:id="@+id/tvDetailFatRatio"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="2dp"
+                                android:text="13%"
+                                style="@style/FitText.PrimaryAccent13" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginVertical="18dp"
+                        android:background="@color/white_alt" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="들어가는 식재료"
+                        style="@style/FitText.PrimaryBold15" />
+
+                    <TextView
+                        android:id="@+id/tvDetailDescription"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="9dp"
+                        android:lineSpacingExtra="4dp"
+                        android:text="• 현미밥 100g"
+                        style="@style/FitText.Secondary14" />
+
+                    <TextView
+                        android:id="@+id/tvDetailNutrition"
+                        android:layout_width="1dp"
+                        android:layout_height="1dp"
+                        android:visibility="gone" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <TextView
+                android:id="@+id/tvDetailPrice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="22dp"
+                android:text="12,500원"
+                android:textColor="@color/mypage_primary_dark"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <com.google.android.material.card.MaterialCardView
+                style="@style/MypageOutlinedCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/fit_space_lg">
+
+                    <LinearLayout
+                        style="@style/FitMacroColumn">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="수량"
+                            style="@style/FitText.PrimaryBold16" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/fit_space_xs"
+                            android:text="최대 20개까지 선택할 수 있어요"
+                            style="@style/FitText.Secondary12" />
+                    </LinearLayout>
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/btnDecreaseQuantity"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:background="@drawable/bg_quantity_stepper"
+                        android:clickable="true"
+                        android:contentDescription="수량 줄이기"
+                        android:focusable="true"
+                        android:gravity="center"
+                        android:text="−"
+                        android:textColor="@color/quantity_stepper_text"
+                        android:textSize="26sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvQuantityValue"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:gravity="center"
+                        android:text="1"
+                        style="@style/FitText.PrimaryDarkBold20" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/btnIncreaseQuantity"
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:background="@drawable/bg_quantity_stepper"
+                        android:clickable="true"
+                        android:contentDescription="수량 늘리기"
+                        android:focusable="true"
+                        android:gravity="center"
+                        android:text="+"
+                        android:textColor="@color/quantity_stepper_text"
+                        android:textSize="26sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="22dp"
+                android:orientation="horizontal">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnAddCart"
+                    style="@style/MypageSecondaryButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:text="장바구니" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

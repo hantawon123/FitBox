@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/mypage_background">
+
+    <LinearLayout
+        android:id="@+id/layoutHeader"
+        android:layout_width="0dp"
+        android:layout_height="52dp"
+        android:background="@color/mypage_warm_white"
+        android:elevation="1dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingStart="@dimen/fit_space_md"
+        android:paddingEnd="@dimen/fit_space_md"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TextView
+            android:id="@+id/btnBack"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:gravity="center"
+            android:text="↩"
+            android:textColor="@color/mypage_fern"
+            android:textSize="26sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvSelectTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="단백질 선택"
+            style="@style/FitText.PrimaryBold16" />
+
+        <Space
+            android:layout_width="40dp"
+            android:layout_height="40dp" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvSelectDescription"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/fit_space_lg"
+        android:layout_marginTop="18dp"
+        android:layout_marginEnd="@dimen/fit_space_lg"
+        android:text="원하는 단백질과 양을 선택해주세요"
+        style="@style/FitText.Secondary14"
+        app:layout_constraintTop_toBottomOf="@id/layoutHeader"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <EditText
+        android:id="@+id/etSearchIngredient"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="@dimen/fit_space_lg"
+        android:layout_marginTop="@dimen/fit_space_md"
+        android:layout_marginEnd="@dimen/fit_space_lg"
+        android:background="@drawable/bg_fit_search"
+        android:hint="재료 검색"
+        android:inputType="text"
+        android:paddingStart="@dimen/fit_space_lg"
+        android:paddingEnd="@dimen/fit_space_lg"
+        android:singleLine="true"
+        android:textColor="@color/mypage_text"
+        android:textColorHint="@color/mypage_text_secondary"
+        android:textSize="14sp"
+        app:layout_constraintTop_toBottomOf="@id/tvSelectDescription"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvIngredientSelect"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="14dp"
+        android:layout_marginTop="14dp"
+        android:layout_marginEnd="14dp"
+        android:layout_marginBottom="@dimen/fit_space_md"
+        android:clipToPadding="false"
+        android:overScrollMode="never"
+        app:layout_constraintTop_toBottomOf="@id/etSearchIngredient"
+        app:layout_constraintBottom_toTopOf="@id/layoutBottomDone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/layoutBottomDone"
+        android:layout_width="0dp"
+        android:layout_height="72dp"
+        android:background="@color/mypage_warm_white"
+        android:elevation="8dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingStart="@dimen/fit_space_lg"
+        android:paddingEnd="@dimen/fit_space_lg"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvSelectedCategoryAmount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="선택한 총량 0g"
+                style="@style/FitText.Secondary12" />
+
+            <TextView
+                android:id="@+id/tvSelectedCategoryPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:text="0원"
+                style="@style/FitText.PrimaryDarkBold18" />
+
+        </LinearLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnDone"
+            style="@style/MypagePrimaryButton"
+            android:layout_width="96dp"
+            android:layout_height="48dp"
+            android:text="담기" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

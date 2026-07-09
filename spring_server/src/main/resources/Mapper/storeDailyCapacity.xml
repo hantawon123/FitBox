@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ssafy.fitbox.mapper.StoreDailyCapacityMapper">
+
+    <update id="decreaseRemainCount">
+        UPDATE store_daily_capacity_table
+        SET remain_cnt = remain_cnt - #{count}
+        WHERE pickup_point_id = #{pickupPointId}
+          AND pickup_date = #{pickupDate}
+          AND remain_cnt >= #{count}
+    </update>
+
+    <update id="increaseRemainCount">
+        UPDATE store_daily_capacity_table
+        SET remain_cnt = remain_cnt + #{count}
+        WHERE pickup_point_id = #{pickupPointId}
+          AND pickup_date = #{pickupDate}
+          AND remain_cnt + #{count} &lt;= total_cnt
+    </update>
+
+    <select id="findTotalCount" resultType="int">
+        SELECT total_cnt
+        FROM store_daily_capacity_table
+        WHERE pickup_point_id = #{pickupPointId}
+          AND pickup_date = #{pickupDate}
+        LIMIT 1
+    </select>
+
+</mapper>

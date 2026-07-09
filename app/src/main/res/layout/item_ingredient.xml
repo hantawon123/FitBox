@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/MypageOutlinedCard"
+    android:id="@+id/cardIngredient"
+    android:layout_width="match_parent"
+    android:layout_height="88dp"
+    android:layout_marginBottom="10dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="@dimen/fit_space_md">
+
+        <ImageView
+            android:id="@+id/ivIngredientImage"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:background="@android:color/white"
+            android:scaleType="centerCrop"
+            android:src="@drawable/logo_full_background_remove" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/fit_space_md"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvIngredientName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="수비드 닭가슴살"
+                style="@style/FitText.PrimaryBold15" />
+
+            <TextView
+                android:id="@+id/tvIngredientNutrition"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/fit_space_xs"
+                android:text="100g 당 단백질 23g · 110kcal"
+                style="@style/FitText.Secondary12" />
+
+            <TextView
+                android:id="@+id/tvIngredientPrice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/fit_space_xs"
+                android:text="+ 800원 (50g)"
+                style="@style/FitText.PrimaryDarkBold12" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/btnDecreaseIngredient"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:text="-"
+            android:textColor="@color/mypage_fern"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvIngredientQuantity"
+            android:layout_width="48dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="0g"
+            style="@style/FitText.PrimaryAccent13" />
+
+        <TextView
+            android:id="@+id/btnIncreaseIngredient"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:text="+"
+            android:textColor="@color/mypage_fern"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

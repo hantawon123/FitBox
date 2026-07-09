@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_my_page_screen"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingStart="@dimen/fit_space_md"
+        android:paddingTop="@dimen/fit_space_2xl"
+        android:paddingEnd="@dimen/fit_space_md"
+        android:paddingBottom="@dimen/fit_space_2xl">
+
+        <TextView
+            android:id="@+id/tvRecoveryTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="아이디 찾기"
+            android:textColor="@color/mypage_text"
+            android:textSize="26sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvRecoveryDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="가입 시 입력한 이름과 전화번호를 입력해주세요."
+            android:textColor="@color/mypage_text_secondary"
+            android:textSize="14sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/fit_space_xl"
+            android:orientation="vertical">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilRecoveryUserId"
+                style="@style/RegInputLayout"
+                android:hint="아이디">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etRecoveryUserId"
+                    style="@style/RegEditText"
+                    android:inputType="text" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilRecoveryName"
+                style="@style/RegInputLayout"
+                android:hint="이름">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etRecoveryName"
+                    style="@style/RegEditText"
+                    android:inputType="textPersonName" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilRecoveryPhone"
+                style="@style/RegInputLayout"
+                android:hint="전화번호">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etRecoveryPhone"
+                    style="@style/RegEditText"
+                    android:inputType="phone" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilRecoveryNewPassword"
+                style="@style/RegInputLayout"
+                android:hint="새 비밀번호"
+                app:endIconMode="password_toggle"
+                app:endIconTint="@color/mypage_fern">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etRecoveryNewPassword"
+                    style="@style/RegEditText"
+                    android:inputType="textPassword" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilRecoveryNewPasswordConfirm"
+                style="@style/RegInputLayout"
+                android:hint="새 비밀번호 확인"
+                app:endIconMode="password_toggle"
+                app:endIconTint="@color/mypage_fern">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etRecoveryNewPasswordConfirm"
+                    style="@style/RegEditText"
+                    android:inputType="textPassword" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <TextView
+                android:id="@+id/tvRecoveryResult"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/fit_space_sm"
+                android:background="@drawable/bg_my_page_card"
+                android:padding="@dimen/fit_space_md"
+                android:textColor="@color/mypage_primary_dark"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:visibility="gone" />
+
+        </LinearLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnRecoverySubmit"
+            style="@style/FitPrimaryButton"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:layout_marginTop="@dimen/fit_space_xl"
+            android:backgroundTint="@color/mypage_fern"
+            android:text="아이디 찾기"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            app:cornerRadius="6dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnRecoveryBackToLogin"
+            style="@style/FitSecondaryButton"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:layout_marginTop="@dimen/fit_space_sm"
+            android:text="로그인으로 돌아가기"
+            android:textColor="@color/mypage_fern"
+            app:cornerRadius="6dp"
+            app:strokeColor="@color/mypage_fern" />
+
+    </LinearLayout>
+</ScrollView>

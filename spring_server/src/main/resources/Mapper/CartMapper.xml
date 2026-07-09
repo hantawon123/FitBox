@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ssafy.fitbox.mapper.CartMapper">
+
+    <select id="findCartIdByUserId" resultType="long">
+        SELECT id
+        FROM cart_table
+        WHERE user_id = #{userId}
+    </select>
+
+    <insert id="createCart">
+        INSERT INTO cart_table (
+            user_id
+        ) VALUES (
+            #{userId}
+        )
+    </insert>
+
+    <insert id="insertCartItem">
+        INSERT INTO cart_item_table (
+            cart_id,
+            meal_id,
+            quantity
+        ) VALUES (
+            #{cartId},
+            #{request.mealId},
+            CASE
+                WHEN #{request.quantity} IS NULL OR #{request.quantity} &lt;= 0 THEN 1
+                ELSE #{request.quantity}
+            END
+        )
+    </insert>
+
+    <resultMap id="cartItemResponseMap" type="com.ssafy.fitbox.dto.response.CartItemResponseDto">
+        <id property="cartItemId" column="cart_item_id" />
+        <result property="mealId" column="meal_id" />
+        <result property="name" column="name" />
+        <result property="mealType" column="meal_type" />
+        <result property="price" column="price" />
+        <result property="calories" column="calories" />
+        <result property="carbohydrate" column="carbohydrate" />
+        <result property="protein" column="protein" />
+        <result property="fat" column="fat" />
+        <result property="quantity" column="quantity" />
+    	<result property="imageUrl" column="image_url" />
+    </resultMap>
+
+    <select id="findCartItemsByCartId" resultMap="cartItemResponseMap">
+        SELECT
+            ci.id AS cart_item_id,
+            ci.meal_id,
+            m.name,
+            m.meal_type,
+            m.price,
+            m.calories,
+            m.carbohydrate,
+            m.protein,
+            m.fat,
+            m.image_url,
+            ci.quantity
+        FROM cart_item_table ci
+        JOIN meal_table m
+            ON ci.meal_id = m.id
+        WHERE ci.cart_id = #{cartId}
+        ORDER BY ci.id DESC
+    </select>
+
+    <delete id="deleteCartItem">
+        DELETE FROM cart_item_table
+        WHERE id = #{cartItemId}
+    </delete>
+
+    <delete id="clearCart">
+        DELETE FROM cart_item_table
+        WHERE cart_id = #{cartId}
+    </delete>
+    
+    <select id="findCartItemIdByCartIdAndMealId" resultType="long">
+    SELECT id
+    FROM cart_item_table
+    WHERE cart_id = #{cartId}
+      AND meal_id = #{mealId}
+    LIMIT 1
+</select>
+
+<update id="increaseCartItemQuantity">
+    UPDATE cart_item_table
+    SET quantity = quantity + #{quantity}
+    WHERE id = #{cartItemId}
+</update>
+
+</mapper>

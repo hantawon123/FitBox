@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/storeMapRoot"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/mypage_background">
+
+    <fragment
+        android:id="@+id/googleMap"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <TextView
+        android:id="@+id/btnBack"
+        style="@style/FitText.PrimaryBold15"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_marginStart="@dimen/fit_space_lg"
+        android:layout_marginTop="@dimen/fit_space_xl"
+        android:background="@color/mypage_warm_white"
+        android:elevation="8dp"
+        android:gravity="center"
+        android:paddingHorizontal="@dimen/fit_space_lg"
+        android:text="← 뒤로" />
+
+    <FrameLayout
+        android:id="@+id/layoutMapFilterFloating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|start"
+        android:layout_marginStart="@dimen/fit_space_lg"
+        android:layout_marginBottom="@dimen/fit_space_xl"
+        android:clipChildren="false"
+        android:clipToPadding="false">
+
+        <LinearLayout
+            android:id="@+id/layoutMapFilterOptions"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|start"
+            android:clipChildren="false"
+            android:clipToPadding="false"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnShowStoresOnly"
+                android:layout_width="54dp"
+                android:layout_height="40dp"
+                android:layout_marginBottom="6dp"
+                android:elevation="6dp"
+                android:gravity="center"
+                android:insetLeft="0dp"
+                android:insetTop="0dp"
+                android:insetRight="0dp"
+                android:insetBottom="0dp"
+                android:minWidth="0dp"
+                android:minHeight="0dp"
+                android:padding="0dp"
+                android:text="매장"
+                android:textColor="@color/mypage_fern"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                app:backgroundTint="#FFFFFF"
+                app:cornerRadius="6dp"
+                app:strokeColor="@color/mypage_fern"
+                app:strokeWidth="1dp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnShowPickupOnly"
+                android:layout_width="54dp"
+                android:layout_height="40dp"
+                android:layout_marginBottom="6dp"
+                android:elevation="6dp"
+                android:gravity="center"
+                android:insetLeft="0dp"
+                android:insetTop="0dp"
+                android:insetRight="0dp"
+                android:insetBottom="0dp"
+                android:minWidth="0dp"
+                android:minHeight="0dp"
+                android:padding="0dp"
+                android:text="픽업"
+                android:textColor="@color/mypage_fern"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                app:backgroundTint="#FFFFFF"
+                app:cornerRadius="6dp"
+                app:strokeColor="@color/mypage_fern"
+                app:strokeWidth="1dp" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnShowAllMarkers"
+                android:layout_width="54dp"
+                android:layout_height="40dp"
+                android:layout_marginBottom="48dp"
+                android:elevation="6dp"
+                android:gravity="center"
+                android:insetLeft="0dp"
+                android:insetTop="0dp"
+                android:insetRight="0dp"
+                android:insetBottom="0dp"
+                android:minWidth="0dp"
+                android:minHeight="0dp"
+                android:padding="0dp"
+                android:text="전체"
+                android:textColor="@color/mypage_warm_white"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                app:backgroundTint="@color/mypage_fern"
+                app:cornerRadius="6dp"
+                app:strokeColor="@color/mypage_fern"
+                app:strokeWidth="1dp" />
+        </LinearLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnMapFilterFab"
+            android:layout_width="54dp"
+            android:layout_height="40dp"
+            android:layout_gravity="bottom|start"
+            android:elevation="8dp"
+            android:gravity="center"
+            android:insetLeft="0dp"
+            android:insetTop="0dp"
+            android:insetRight="0dp"
+            android:insetBottom="0dp"
+            android:minWidth="0dp"
+            android:minHeight="0dp"
+            android:padding="0dp"
+            android:text="전체"
+            android:textColor="@color/mypage_warm_white"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            app:backgroundTint="@color/mypage_fern"
+            app:cornerRadius="6dp"
+            app:strokeColor="@color/mypage_fern"
+            app:strokeWidth="1dp" />
+    </FrameLayout>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardStoreInfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_margin="18dp"
+        android:elevation="10dp"
+        android:visibility="gone"
+        app:cardBackgroundColor="@color/mypage_warm_white"
+        app:cardCornerRadius="6dp"
+        app:strokeWidth="0dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="18dp">
+
+            <TextView
+                android:id="@+id/tvStoreName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="핏박스 구미역점"
+                android:textColor="@color/mypage_text"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvStoreAddress"
+                style="@style/FitText.Secondary14"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/fit_space_sm"
+                android:text="경상북도 구미시 구미중앙로 76" />
+
+            <TextView
+                android:id="@+id/tvStoreStock"
+                style="@style/FitText.PrimaryBold15Accent"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="전체 80개 · 남은 수량 35개" />
+
+            <TextView
+                android:id="@+id/tvDistance"
+                style="@style/FitText.Secondary14"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/fit_space_sm"
+                android:text="현재 위치와의 거리 계산 중" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnChooseStore"
+                style="@style/MypagePrimaryButtonCompact"
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:layout_marginTop="@dimen/fit_space_lg"
+                android:text="매장에서 픽업" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnShowPickupPoints"
+                style="@style/MypageSecondaryButton"
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:layout_marginTop="@dimen/fit_space_sm"
+                android:text="주변 픽업 포인트 보기" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnChoosePickupPoint"
+                style="@style/MypagePrimaryButtonCompact"
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:layout_marginTop="@dimen/fit_space_lg"
+                android:text="이 포인트에서 픽업하기"
+                android:visibility="gone" />
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+</FrameLayout>

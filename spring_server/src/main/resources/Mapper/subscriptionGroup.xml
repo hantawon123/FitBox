@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ssafy.fitbox.mapper.SubscriptionGroupMapper">
+
+    <resultMap id="subscriptionGroupMap" type="com.ssafy.fitbox.dto.SubscriptionGroup">
+        <id property="id" column="id"/>
+        <result property="userId" column="user_id"/>
+        <result property="orderTime" column="order_time"/>
+        <result property="subscriptionStartDate" column="subscription_start_date"/>
+        <result property="subscriptionEndDate" column="subscription_end_date"/>
+        <result property="nextOrderMonth" column="next_order_month"/>
+        <result property="status" column="status"/>
+        <result property="receiveType" column="receive_type"/>
+        <result property="storeId" column="store_id"/>
+        <result property="address" column="address"/>
+    </resultMap>
+
+    <resultMap id="subscriptionResponseMap"
+               type="com.ssafy.fitbox.dto.response.SubscriptionResponse">
+        <id property="subscriptionGroupId" column="subscription_group_id"/>
+        <result property="userId" column="user_id"/>
+        <result property="orderTime" column="order_time"/>
+        <result property="subscriptionStartDate" column="subscription_start_date"/>
+        <result property="subscriptionEndDate" column="subscription_end_date"/>
+        <result property="nextOrderMonth" column="next_order_month"/>
+        <result property="status" column="status"/>
+        <result property="receiveType" column="receive_type"/>
+        <result property="storeId" column="store_id"/>
+        <result property="storeName" column="store_name"/>
+        <result property="storeAddress" column="store_address"/>
+        <result property="address" column="address"/>
+    </resultMap>
+
+    <insert id="insert"
+            parameterType="com.ssafy.fitbox.dto.SubscriptionGroup"
+            useGeneratedKeys="true"
+            keyProperty="id">
+        INSERT INTO subscription_group_table (
+            user_id,
+            subscription_start_date,
+            subscription_end_date,
+            next_order_month,
+            status,
+            receive_type,
+            store_id,
+            address
+        )
+        VALUES (
+            #{userId},
+            #{subscriptionStartDate},
+            #{subscriptionEndDate},
+            #{nextOrderMonth},
+            #{status},
+            #{receiveType},
+            #{storeId},
+            #{address}
+        )
+    </insert>
+
+    <select id="selectById" parameterType="long" resultMap="subscriptionGroupMap">
+        SELECT
+            id,
+            user_id,
+            order_time,
+            subscription_start_date,
+            subscription_end_date,
+            next_order_month,
+            status,
+            receive_type,
+            store_id,
+            address
+        FROM subscription_group_table
+        WHERE id = #{id}
+    </select>
+
+    <select id="findSubscriptionsByUserId" resultMap="subscriptionResponseMap">
+        SELECT
+            sg.id AS subscription_group_id,
+            sg.user_id,
+            sg.order_time,
+            sg.subscription_start_date,
+            sg.subscription_end_date,
+            sg.next_order_month,
+            sg.status,
+            sg.receive_type,
+            sg.store_id,
+            s.name AS store_name,
+            s.address AS store_address,
+            sg.address
+        FROM subscription_group_table sg
+        LEFT JOIN store_table s
+            ON sg.store_id = s.id
+        WHERE sg.user_id = #{userId}
+          AND sg.status IN ('ACTIVE', 'PAUSED', 'CANCELED')
+        ORDER BY sg.order_time DESC
+    </select>
+
+    <update id="cancelSubscription">
+        UPDATE subscription_group_table
+        SET
+            status = 'CANCELED',
+            subscription_end_date = CURRENT_DATE
+        WHERE id = #{subscriptionGroupId}
+          AND user_id = #{userId}
+          AND status IN ('ACTIVE', 'PAUSED')
+    </update>
+
+</mapper>

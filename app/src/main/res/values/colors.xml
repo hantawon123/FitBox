@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="white">#F5F4EE</color>
+    <color name="white_alt">#EDEBE8</color>
+
+    <!-- Fresh green design system -->
+    <color name="fit_primary">#2F6B45</color>
+    <color name="fit_primary_dark">#214E34</color>
+    <color name="fit_primary_container">#EAF4EC</color>
+    <color name="fit_on_primary_container">#24563A</color>
+    <color name="fit_secondary">#647068</color>
+    <color name="fit_accent">#E8A23A</color>
+    <color name="fit_background">#EDEBE8</color>
+    <color name="fit_surface">#F5F4EE</color>
+    <color name="fit_surface_variant">#EDEBE8</color>
+    <color name="fit_outline">#EDEBE8</color>
+    <color name="fit_text_primary">#222522</color>
+    <color name="fit_text_secondary">#686D69</color>
+    <color name="fit_text_hint">#969B97</color>
+    <color name="fit_error">#BA1A1A</color>
+    <color name="fit_error_container">#FFDAD6</color>
+    <color name="fit_nav_selected">#24563A</color>
+    <color name="fit_nav_unselected">#7A7F7B</color>
+
+    <!-- My page palette from reference -->
+    <color name="mypage_fern">#768E78</color>
+    <color name="mypage_pistachio">#C6C09C</color>
+    <color name="mypage_fennel">#EBDEC0</color>
+    <color name="mypage_peony">#E79897</color>
+    <color name="mypage_peach">#FCAC83</color>
+    <color name="mypage_honey">#FCC88A</color>
+    <color name="subscription_start_day">#FCC88A</color>
+    <color name="subscription_end_day">#E79897</color>
+    <color name="mypage_warm_white">#FFFFFF</color>
+    <color name="mypage_background">#f5f4ee</color>
+    <color name="mypage_surface">#F5F4EE</color>
+    <color name="mypage_divider">#E5E0D6</color>
+    <color name="mypage_surface_alt">#EBDEC0</color>
+    <color name="mypage_primary">#768E78</color>
+    <color name="mypage_primary_dark">#3F5142</color>
+    <color name="mypage_secondary">#C6C09C</color>
+    <color name="mypage_secondary_soft">#EBDEC0</color>
+    <color name="mypage_text">#2D302B</color>
+    <color name="mypage_text_secondary">#717166</color>
+</resources>

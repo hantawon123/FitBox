@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/mypage_background"
+    android:orientation="vertical"
+    tools:context=".fragment.OrderListFragment">
+
+    <TextView
+        android:id="@+id/tvOrderListTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="@dimen/fit_space_xl"
+        android:paddingTop="@dimen/fit_space_2xl"
+        android:paddingEnd="@dimen/fit_space_xl"
+        android:paddingBottom="@dimen/fit_space_md"
+        android:text="주문 내역"
+        style="@style/FitText.PrimaryBold24" />
+
+    <LinearLayout
+        android:id="@+id/layoutOrderListEmpty"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="@dimen/fit_space_2xl"
+        android:visibility="gone">
+
+        <ImageView
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:alpha="0.7"
+            android:contentDescription="주문 내역 없음"
+            android:src="@drawable/list"
+            app:tint="@color/mypage_text_secondary" />
+
+        <TextView
+            android:id="@+id/tvOrderListEmpty"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/fit_space_lg"
+            android:gravity="center"
+            android:text="아직 주문 내역이 없어요"
+            style="@style/FitText.PrimaryBold17" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:gravity="center"
+            android:text="건강한 한 끼를 새로 주문해보세요."
+            style="@style/FitText.Secondary13" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnOrderListEmptyAction"
+            style="@style/MypageSecondaryButton"
+            android:layout_width="wrap_content"
+            android:layout_height="46dp"
+            android:layout_marginTop="18dp"
+            android:minHeight="46dp"
+            android:text="식단 둘러보기" />
+
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvOrderList"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:clipToPadding="false"
+        android:paddingBottom="@dimen/fit_space_2xl"
+        tools:listitem="@layout/item_order" />
+
+</LinearLayout>

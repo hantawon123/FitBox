@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/mypage_warm_white"
+    tools:context=".activity.MainActivity">
+
+    <FrameLayout
+        android:id="@+id/main_container"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_navigation_view"
+        app:layout_constraintEnd_toEndOf="@+id/bottom_navigation_view"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/bottom_navigation_shadow"
+        android:layout_width="match_parent"
+        android:layout_height="16dp"
+        android:background="@drawable/bg_bottom_navigation_shadow"
+        android:elevation="15dp"
+        android:translationZ="7dp"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_navigation_view"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_bottom_navigation_mypage"
+        android:elevation="18dp"
+        android:minHeight="72dp"
+        android:outlineProvider="background"
+        android:paddingTop="4dp"
+        android:paddingBottom="4dp"
+        android:translationZ="10dp"
+        app:itemActiveIndicatorStyle="@style/FitBottomNavIndicator"
+        app:itemIconTint="@color/bottom_nav_item_color"
+        app:itemTextColor="@color/bottom_nav_item_color"
+        app:itemRippleColor="@android:color/transparent"
+        app:labelVisibilityMode="labeled"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/menu_bottom_nav" />
+
+    <FrameLayout
+        android:id="@+id/layout_startup_loading"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/mypage_warm_white"
+        android:clickable="true"
+        android:elevation="30dp"
+        android:focusable="true"
+        android:translationZ="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingHorizontal="32dp">
+
+            <ImageView
+                android:id="@+id/iv_startup_logo"
+                android:layout_width="118dp"
+                android:layout_height="118dp"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/app_name"
+                android:scaleType="fitCenter"
+                android:src="@drawable/logo_background_remove" />
+
+            <ProgressBar
+                android:id="@+id/progress_startup_loading"
+                style="?android:attr/progressBarStyleSmall"
+                android:layout_width="34dp"
+                android:layout_height="34dp"
+                android:layout_marginTop="22dp"
+                android:indeterminate="true"
+                android:indeterminateTint="@color/mypage_fern" />
+
+        </LinearLayout>
+
+    </FrameLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

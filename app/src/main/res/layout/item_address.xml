@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/MypageCard"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="@dimen/fit_space_lg"
+    android:layout_marginVertical="7dp"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="?attr/selectableItemBackground">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <View
+            android:layout_width="4dp"
+            android:layout_height="match_parent"
+            android:background="@color/mypage_fern" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:paddingHorizontal="@dimen/fit_space_lg"
+            android:paddingVertical="14dp">
+
+            <TextView
+                android:id="@+id/tvAddress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="4dp"
+                android:textColor="@color/mypage_text"
+                android:textSize="15sp" />
+
+            <View
+                android:id="@+id/viewAddressActionDivider"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="@dimen/fit_space_md"
+                android:background="@color/mypage_surface"
+                android:visibility="gone" />
+
+            <LinearLayout
+                android:id="@+id/layoutAddressActions"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/fit_space_sm"
+                android:gravity="center_vertical|end"
+                android:orientation="horizontal"
+                android:visibility="gone">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnViewAddressMap"
+                    style="@style/MypageSecondaryButton"
+                    android:layout_width="0dp"
+                    android:layout_height="34dp"
+                    android:layout_weight="1"
+                    android:minHeight="34dp"
+                    android:paddingHorizontal="8dp"
+                    android:text="지도에서 보기"
+                    android:textSize="12sp"
+                    app:icon="@drawable/ic_location_line"
+                    app:iconGravity="textStart"
+                    app:iconPadding="@dimen/fit_space_xs"
+                    app:iconSize="16dp"
+                    app:iconTint="@color/mypage_fern"
+                    app:cornerRadius="4dp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnDeleteAddress"
+                    style="@style/MypageDangerOutlineButton"
+                    android:layout_width="88dp"
+                    android:layout_height="34dp"
+                    android:layout_marginStart="@dimen/fit_space_sm"
+                    android:minHeight="34dp"
+                    android:paddingHorizontal="8dp"
+                    android:text="삭제"
+                    android:textSize="12sp"
+                    app:icon="@drawable/ic_trash_line"
+                    app:iconGravity="textStart"
+                    app:iconPadding="@dimen/fit_space_xs"
+                    app:iconSize="16dp"
+                    app:iconTint="@color/fit_error" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

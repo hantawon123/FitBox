@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ssafy.fitbox.mapper.SubscriptOrderMapper">
+
+    <resultMap id="subscriptOrderMap" type="com.ssafy.fitbox.dto.SubscriptOrder">
+        <id property="id" column="id"/>
+        <result property="subscriptionGroupId" column="subscription_group_id"/>
+        <result property="userId" column="user_id"/>
+        <result property="orderTime" column="order_time"/>
+        <result property="dateStart" column="date_start"/>
+        <result property="dateEnd" column="date_end"/>
+        <result property="mon" column="mon"/>
+        <result property="tue" column="tue"/>
+        <result property="wed" column="wed"/>
+        <result property="thu" column="thu"/>
+        <result property="fri" column="fri"/>
+        <result property="sat" column="sat"/>
+        <result property="sun" column="sun"/>
+        <result property="quantity" column="quantity"/>
+        <result property="receiveType" column="receive_type"/>
+        <result property="storeId" column="store_id"/>
+        <result property="address" column="address"/>
+    </resultMap>
+
+    <select id="selectAll" resultMap="subscriptOrderMap">
+        SELECT
+            id,
+            subscription_group_id,
+            user_id,
+            order_time,
+            date_start,
+            date_end,
+            mon,
+            tue,
+            wed,
+            thu,
+            fri,
+            sat,
+            sun,
+            quantity,
+            receive_type,
+            store_id,
+            address
+        FROM subscript_order_table
+        ORDER BY id DESC
+    </select>
+
+    <select id="selectById" parameterType="Long" resultMap="subscriptOrderMap">
+        SELECT
+            id,
+            subscription_group_id,
+            user_id,
+            order_time,
+            date_start,
+            date_end,
+            mon,
+            tue,
+            wed,
+            thu,
+            fri,
+            sat,
+            sun,
+            quantity,
+            receive_type,
+            store_id,
+            address
+        FROM subscript_order_table
+        WHERE id = #{id}
+    </select>
+
+    <insert id="insert"
+            parameterType="com.ssafy.fitbox.dto.SubscriptOrder"
+            useGeneratedKeys="true"
+            keyProperty="id">
+        INSERT INTO subscript_order_table (
+            subscription_group_id,
+            user_id,
+            date_start,
+            date_end,
+            mon,
+            tue,
+            wed,
+            thu,
+            fri,
+            sat,
+            sun,
+            quantity,
+            receive_type,
+            store_id,
+            address
+        )
+        VALUES (
+            #{subscriptionGroupId},
+            #{userId},
+            #{dateStart},
+            #{dateEnd},
+            #{mon},
+            #{tue},
+            #{wed},
+            #{thu},
+            #{fri},
+            #{sat},
+            #{sun},
+            #{quantity},
+            #{receiveType},
+            #{storeId},
+            #{address}
+        )
+    </insert>
+
+    <update id="update" parameterType="com.ssafy.fitbox.dto.SubscriptOrder">
+        UPDATE subscript_order_table
+        SET
+            subscription_group_id = #{subscriptionGroupId},
+            user_id = #{userId},
+            date_start = #{dateStart},
+            date_end = #{dateEnd},
+            mon = #{mon},
+            tue = #{tue},
+            wed = #{wed},
+            thu = #{thu},
+            fri = #{fri},
+            sat = #{sat},
+            sun = #{sun},
+            quantity = #{quantity},
+            receive_type = #{receiveType},
+            store_id = #{storeId},
+            address = #{address}
+        WHERE id = #{id}
+    </update>
+
+    <delete id="delete" parameterType="Long">
+        DELETE FROM subscript_order_table
+        WHERE id = #{id}
+    </delete>
+
+</mapper>

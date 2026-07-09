@@ -1,0 +1,758 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/orderScrollView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/mypage_background"
+    android:clipChildren="false"
+    android:clipToPadding="false"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:orientation="vertical"
+        android:padding="@dimen/fit_space_xl">
+
+        <TextView
+            android:id="@+id/btnBack"
+            style="@style/FitText.PrimaryBold16"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:gravity="center"
+            android:paddingHorizontal="@dimen/fit_space_sm"
+            android:text="← 뒤로" />
+
+        <TextView
+            android:id="@+id/tvOrderType"
+            style="@style/FitText.PrimaryBold28"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:text="장바구니 주문" />
+
+        <TextView
+            android:id="@+id/tvQuantity"
+            style="@style/FitText.Secondary14"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:lineSpacingExtra="4dp"
+            android:text="주문 상품" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="18dp"
+            android:background="@color/white_alt" />
+
+        <TextView
+            style="@style/FitText.PrimaryBold18"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="22dp"
+            android:text="수령 방법" />
+
+        <RadioGroup
+            android:id="@+id/radioGroupReceiveType"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:visibility="gone">
+
+            <RadioButton
+                android:id="@+id/radioPickup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <RadioButton
+                android:id="@+id/radioDelivery"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+        </RadioGroup>
+
+        <LinearLayout
+            android:id="@+id/layoutReceiveTypeCards"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/fit_space_md"
+            android:clipChildren="false"
+            android:clipToPadding="false"
+            android:orientation="horizontal">
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardPickupOption"
+                style="@style/MypageCard"
+                android:layout_width="0dp"
+                android:layout_height="124dp"
+                android:layout_marginEnd="@dimen/fit_space_sm"
+                android:layout_weight="1"
+                app:cardBackgroundColor="@color/mypage_fennel">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical"
+                    android:padding="14dp">
+
+                    <TextView
+                        android:id="@+id/tvPickupTitle"
+                        style="@style/FitText.PrimaryBold16"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="매장 픽업" />
+
+                    <TextView
+                        style="@style/FitText.Secondary12"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="가까운 매장에서 직접 수령" />
+
+                    <TextView
+                        android:id="@+id/tvPickupFeeLabel"
+                        style="@style/FitText.PrimaryAccent13"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:text="배송비 0원"
+                        android:visibility="gone" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardDeliveryOption"
+                style="@style/MypageCard"
+                android:layout_width="0dp"
+                android:layout_height="124dp"
+                android:layout_marginStart="@dimen/fit_space_sm"
+                android:layout_weight="1">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:orientation="vertical"
+                    android:padding="14dp">
+
+                    <TextView
+                        android:id="@+id/tvDeliveryTitle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="배달 받기"
+                        android:textColor="@color/mypage_text_secondary"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        style="@style/FitText.Secondary12"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="입력한 주소로 배송" />
+
+                    <TextView
+                        android:id="@+id/tvDeliveryOptionFee"
+                        style="@style/FitText.PrimaryAccent13"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:text="배송비 3,000원" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/cardReceiveDate"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="22dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvReceiveDateTitle"
+                style="@style/FitText.PrimaryBold17"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="픽업 날짜" />
+
+            <TextView
+                android:id="@+id/tvSelectedReceiveDate"
+                style="@style/FitText.Secondary14"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:text="아직 선택된 날짜가 없습니다." />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnSelectReceiveDate"
+                style="@style/MypagePrimaryButtonCompact"
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:layout_marginTop="12dp"
+                android:text="날짜 선택" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layoutSubscriptionOrder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="22dp"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <TextView
+                style="@style/FitText.PrimaryBold17"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="구독 기간" />
+
+            <TextView
+                style="@style/FitText.Secondary13"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:text="정기적으로 받을 기간을 선택해주세요." />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnSelectSubscriptionStartDate"
+                style="@style/MypagePrimaryButtonCompact"
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:layout_marginTop="12dp"
+                android:text="구독 시작일 선택" />
+
+            <TextView
+                android:id="@+id/tvSelectedSubscriptionStartDate"
+                style="@style/FitText.Secondary14"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:text="시작일이 선택되지 않았습니다." />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnSelectSubscriptionEndDate"
+                style="@style/MypagePrimaryButtonCompact"
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:layout_marginTop="12dp"
+                android:text="구독 종료일 선택" />
+
+            <TextView
+                android:id="@+id/tvSelectedSubscriptionEndDate"
+                style="@style/FitText.Secondary14"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:text="종료일이 선택되지 않았습니다." />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="18dp"
+                android:background="@color/white_alt" />
+
+            <TextView
+                style="@style/FitText.PrimaryBold17"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:text="수령 요일" />
+
+            <TextView
+                style="@style/FitText.Secondary13"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:text="구독 기간 동안 받을 요일을 선택해주세요." />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/checkMon"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="월" />
+
+                <CheckBox
+                    android:id="@+id/checkTue"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="화" />
+
+                <CheckBox
+                    android:id="@+id/checkWed"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="수" />
+
+                <CheckBox
+                    android:id="@+id/checkThu"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="목" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <CheckBox
+                    android:id="@+id/checkFri"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="금" />
+
+                <CheckBox
+                    android:id="@+id/checkSat"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="토" />
+
+                <CheckBox
+                    android:id="@+id/checkSun"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="일" />
+
+                <Space
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layoutPickup"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="22dp"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/FitText.PrimaryBold17"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="픽업 매장" />
+
+            <com.google.android.material.card.MaterialCardView
+                style="@style/MypageOutlinedCard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:cardBackgroundColor="@color/mypage_warm_white">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="14dp">
+
+                    <LinearLayout
+                        android:id="@+id/layoutPickupEmptyState"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tvStoreInfo"
+                            style="@style/FitText.Secondary14"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:lineSpacingExtra="3dp"
+                            android:text="아직 선택된 매장이 없습니다.\n지도에서 픽업할 매장을 선택해주세요." />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/layoutPickupStoreDetail"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:visibility="gone">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="26dp"
+                            android:background="@drawable/bg_order_info_badge_fern"
+                            android:gravity="center"
+                            android:paddingHorizontal="10dp"
+                            android:text="매장"
+                            android:textColor="@color/mypage_warm_white"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tvPickupStoreName"
+                            style="@style/FitText.PrimaryBold15"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="매장 이름" />
+
+                        <TextView
+                            android:id="@+id/tvPickupStoreAddress"
+                            style="@style/FitText.Secondary13"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:lineSpacingExtra="2dp"
+                            android:text="매장 주소" />
+
+                        <LinearLayout
+                            android:id="@+id/layoutPickupPointDetail"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="12dp"
+                            android:orientation="vertical"
+                            android:visibility="gone">
+
+                            <View
+                                android:layout_width="match_parent"
+                                android:layout_height="1dp"
+                                android:background="@color/white_alt" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="26dp"
+                                android:layout_marginTop="12dp"
+                                android:background="@drawable/bg_order_info_badge_honey"
+                                android:gravity="center"
+                                android:paddingHorizontal="10dp"
+                                android:text="픽업 포인트"
+                                android:textColor="@color/mypage_text"
+                                android:textSize="12sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/tvPickupPointName"
+                                style="@style/FitText.PrimaryBold15"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:text="픽업 포인트 이름" />
+
+                            <TextView
+                                android:id="@+id/tvPickupPointAddress"
+                                style="@style/FitText.Secondary13"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:lineSpacingExtra="2dp"
+                                android:text="픽업 포인트 주소" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnSelectStore"
+                style="@style/MypagePrimaryButtonCompact"
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:layout_marginTop="12dp"
+                android:text="지도에서 매장 선택" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layoutAddress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="22dp"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <TextView
+                style="@style/FitText.PrimaryBold18"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="배송지" />
+
+            <TextView
+                style="@style/FitText.Secondary13"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:text="도로명 주소 검색 후 상세 주소를 입력해주세요." />
+
+            <Spinner
+                android:id="@+id/spinnerSavedAddress"
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:layout_marginTop="12dp"
+                android:background="@color/mypage_surface"
+                android:paddingHorizontal="@dimen/fit_space_md"
+                android:visibility="gone" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilAddressSearch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:hint="검색한 도로명 주소"
+                app:boxBackgroundColor="@color/mypage_warm_white"
+                app:boxBackgroundMode="outline"
+                app:boxCornerRadiusBottomEnd="6dp"
+                app:boxCornerRadiusBottomStart="6dp"
+                app:boxCornerRadiusTopEnd="6dp"
+                app:boxCornerRadiusTopStart="6dp"
+                app:boxStrokeColor="@color/mypage_fern"
+                app:boxStrokeWidth="1dp"
+                app:boxStrokeWidthFocused="2dp"
+                app:endIconContentDescription="주소 검색"
+                app:endIconDrawable="@drawable/ic_search_line"
+                app:endIconMode="custom"
+                app:endIconTint="@color/mypage_fern"
+                app:hintTextColor="@color/mypage_fern">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etAddress"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:clickable="true"
+                    android:cursorVisible="false"
+                    android:focusable="false"
+                    android:gravity="center_vertical"
+                    android:paddingHorizontal="14dp"
+                    android:singleLine="true"
+                    android:textColor="@color/mypage_text"
+                    android:textSize="14sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:hint="상세 주소 입력 예: 101동 1203호"
+                app:boxBackgroundColor="@color/mypage_warm_white"
+                app:boxBackgroundMode="outline"
+                app:boxCornerRadiusBottomEnd="6dp"
+                app:boxCornerRadiusBottomStart="6dp"
+                app:boxCornerRadiusTopEnd="6dp"
+                app:boxCornerRadiusTopStart="6dp"
+                app:boxStrokeColor="@color/mypage_fern"
+                app:boxStrokeWidth="1dp"
+                app:boxStrokeWidthFocused="2dp"
+                app:hintTextColor="@color/mypage_fern">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/etAddressDetail"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:gravity="center_vertical"
+                    android:inputType="text"
+                    android:paddingHorizontal="14dp"
+                    android:singleLine="true"
+                    android:textColor="@color/mypage_text"
+                    android:textSize="14sp" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="18dp"
+                android:background="@color/white_alt" />
+
+            <TextView
+                style="@style/FitText.PrimaryBold18"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:text="배송 요청사항" />
+
+            <RadioGroup
+                android:id="@+id/radioGroupDeliveryRequest"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="vertical">
+
+                <RadioButton
+                    android:id="@+id/radioRequestDoor"
+                    style="@style/FitText.Secondary14"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="문 앞에 놓아주세요" />
+
+                <RadioButton
+                    android:id="@+id/radioRequestDirect"
+                    style="@style/FitText.Secondary14"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="직접 받을게요" />
+
+                <RadioButton
+                    android:id="@+id/radioRequestNoBell"
+                    style="@style/FitText.Secondary14"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="벨 누르지 말아주세요" />
+            </RadioGroup>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/cardDeliveryStore"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="22dp"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <TextView
+                style="@style/FitText.PrimaryBold18"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="담당 매장" />
+
+            <TextView
+                android:id="@+id/tvDeliveryStoreName"
+                style="@style/FitText.Secondary14"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="배송지를 선택하면 가장 가까운 매장이 자동 선택됩니다." />
+
+            <TextView
+                android:id="@+id/tvDeliveryStoreAddress"
+                style="@style/FitText.Secondary13"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="" />
+
+            <TextView
+                android:id="@+id/tvDeliveryStoreDistance"
+                style="@style/FitText.PrimaryAccent13"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnChangeDeliveryStore"
+                style="@style/MypageTonalButton"
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:layout_marginTop="12dp"
+                android:text="지도에서 담당 매장 변경" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/cardPaymentSummary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="26dp"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/FitText.PrimaryBold18"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="결제 금액" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/FitText.Secondary14"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="상품 금액" />
+
+                <TextView
+                    android:id="@+id/tvProductAmount"
+                    style="@style/FitText.PrimaryBold14"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0원" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/FitText.Secondary14"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="배송비" />
+
+                <TextView
+                    android:id="@+id/tvDeliveryFee"
+                    style="@style/FitText.PrimaryBold14"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0원" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="14dp"
+                android:background="@color/white_alt" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/FitText.PrimaryBold16"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="최종 결제 금액" />
+
+                <TextView
+                    android:id="@+id/tvFinalPaymentPrice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0원"
+                    android:textColor="@color/mypage_fern"
+                    android:textSize="22sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvFinalPaymentGuide"
+                style="@style/FitText.Secondary12"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="픽업 주문은 배송비가 추가되지 않습니다." />
+        </LinearLayout>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnPay"
+            style="@style/MypagePrimaryButtonCompact"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:layout_marginTop="18dp"
+            android:text="결제하기"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+</ScrollView>
