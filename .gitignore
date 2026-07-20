@@ -16,3 +16,5 @@ local.properties
 .kotlin/
 firebase-service-account*.json
 *service-account-key*.json
+.ppt
+.pptx

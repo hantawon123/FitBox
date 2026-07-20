@@ -17,7 +17,6 @@
 <br/><br/>
 
 **SSAFY Android Project**  
-2026.06 - 2026.06
 
 </div>
 
